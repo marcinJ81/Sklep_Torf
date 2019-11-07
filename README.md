@@ -12,4 +12,4 @@ This project is an exercise based on a DNA course.
 [![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/BC_glowny_widok.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/BC_glowny_widok.PNG "Procces Level")
 
 ## Event Storming Design Level
-
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL_User.jpg)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL_User.jpg "First BC in Design Level")
