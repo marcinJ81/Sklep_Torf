@@ -5,7 +5,7 @@ using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
-    public class Fake_UserForTest : IUsersRepository
+    public class Fake_UserRepositoryForTest : IUsersRepository
     {
         public bool AddUser(User user)
         {
@@ -22,7 +22,15 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         public User SearchUser(int user_id)
         {
-            throw new NotImplementedException();
+            return new User() { user_id = 1, user_name = "test", user_login = "wolnylogin" };
         }
+       public bool IsThereAUserExist(int id_user)
+        {
+            if (id_user == 1)
+                return true;
+            return false;
+        }
+
+
     }
 }

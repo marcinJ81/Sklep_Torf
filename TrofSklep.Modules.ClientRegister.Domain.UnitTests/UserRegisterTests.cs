@@ -15,7 +15,7 @@ namespace Tests
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
-            this.userRepository = new Fake_UserForTest();
+            this.userRepository = new Fake_UserRepositoryForTest();
             this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
         }
 

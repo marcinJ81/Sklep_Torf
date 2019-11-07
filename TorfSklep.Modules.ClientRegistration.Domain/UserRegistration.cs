@@ -13,6 +13,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             this.usersRepository = usersRepository;
             this.availabilityUserName = availabilityUserName;
         }
+        //methods
         #region Methods
         public bool RegisterUser(User user)
         {
@@ -22,13 +23,21 @@ namespace TorfSklep.Modules.UserRegistration.Domain
                 return usersRepository.AddUser(user);
             }
             return result;
-
         }
-        public void RetryTheVerification() { }
+       
         public void WerifyTheAccount() { }
         public void AssignAnExternalIdentifier()
         {
             throw new NotImplementedException();
+        }
+
+        public bool SendVerificationEmail(int id_user)
+        {
+            if (usersRepository.IsThereAUserExist(id_user))
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
     }

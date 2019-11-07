@@ -8,7 +8,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     public interface IUserRegistration
     {
         bool RegisterUser(User user);
-        void RetryTheVerification();
+        bool SendVerificationEmail(int id_user);
         void WerifyTheAccount();
         void AssignAnExternalIdentifier();
     }

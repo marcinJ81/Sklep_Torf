@@ -17,11 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{94418B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{C3CA8B39-22A9-4947-800E-7AE5BDA64F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Modules.UserRegistration.Respository", "TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj", "{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorfSklep.Modules.UserRegistration.Respository", "TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj", "{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C73D7CDB-F25D-4F6E-8496-407A70EBB3B9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{18A473D8-AAFF-4914-8B72-A3BEDB929DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Modules.UserRegistration.ExternalSystem", "TorfSklep.Modules.UserRegistration.ExternalSystem\TorfSklep.Modules.UserRegistration.ExternalSystem.csproj", "{5744B2E4-2594-4E92-B457-30DBFB740F5C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailSystem", "EmailSystem", "{E07491CC-DAFE-4910-A957-320517FD6A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torf_Sklep.Infrastructure.EmailSystem", "Torf_Sklep.Infrastructure.EmailSystem\Torf_Sklep.Infrastructure.EmailSystem.csproj", "{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,10 @@ Global
 		{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5744B2E4-2594-4E92-B457-30DBFB740F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5744B2E4-2594-4E92-B457-30DBFB740F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5744B2E4-2594-4E92-B457-30DBFB740F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5744B2E4-2594-4E92-B457-30DBFB740F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,8 +59,8 @@ Global
 		{94418B36-E449-4973-A7D4-C8ADC7B6EF10} = {BE83144F-DF3F-4FA4-B0EF-0728C2E6B255}
 		{C3CA8B39-22A9-4947-800E-7AE5BDA64F23} = {BE83144F-DF3F-4FA4-B0EF-0728C2E6B255}
 		{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028} = {C3CA8B39-22A9-4947-800E-7AE5BDA64F23}
-		{C73D7CDB-F25D-4F6E-8496-407A70EBB3B9} = {BE83144F-DF3F-4FA4-B0EF-0728C2E6B255}
-		{5744B2E4-2594-4E92-B457-30DBFB740F5C} = {C73D7CDB-F25D-4F6E-8496-407A70EBB3B9}
+		{E07491CC-DAFE-4910-A957-320517FD6A5D} = {18A473D8-AAFF-4914-8B72-A3BEDB929DE1}
+		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA} = {E07491CC-DAFE-4910-A957-320517FD6A5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {067F9518-2BA6-4932-8433-A846678834A5}

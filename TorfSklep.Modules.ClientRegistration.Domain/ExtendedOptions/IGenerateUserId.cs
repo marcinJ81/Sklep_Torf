@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions
 {
-    public interface IGenerateUserId
+    public interface IGenerateUserId<T> where T : class 
     {
-        string GenerateUserId();
+        T GenerateUserId();
     }
 }
