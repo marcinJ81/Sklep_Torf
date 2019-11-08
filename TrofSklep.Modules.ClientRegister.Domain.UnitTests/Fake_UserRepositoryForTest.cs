@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Modules.UserRegistration.Respository;
 
@@ -33,16 +34,41 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         }
        public bool IsThereAUserExist(int id_user)
         {
-            if (id_user == 1)
+            if(getListOfUsers().Any(x => x.user_id == id_user))
                 return true;
             return false;
         }
 
         public bool IsAccountActive(int id_user)
         {
-            if (id_user == 0)
+            if (getListOfUsers().Where(x => x.user_id == id_user).FirstOrDefault().user_account_active == 0)
                 return false;
             return true;
+        }
+
+        private List<User> getListOfUsers()
+        {
+            List<User> listOfUsers = new List<User>();
+            listOfUsers.Add(
+            new User
+            {
+                user_id = 1,
+                user_name = "active account",
+                user_login = "wolnylogin",
+                user_account_active = 1,
+                user_email = "test@test",
+                user_ban = false
+            });
+            listOfUsers.Add(new User
+            {
+                user_id = 0,
+                user_name = "unactive account",
+                user_login = "zajety",
+                user_account_active = 0,
+                user_email = "test_test",
+                user_ban = true
+            });
+            return listOfUsers; 
         }
     }
 }
