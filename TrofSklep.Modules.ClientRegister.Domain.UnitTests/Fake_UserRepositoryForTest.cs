@@ -8,6 +8,30 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
     public class Fake_UserRepositoryForTest : IUsersRepository
     {
+        private List<User> getListOfUsers()
+        {
+            List<User> listOfUsers = new List<User>();
+            listOfUsers.Add(
+            new User
+            {
+                user_id = 1,
+                user_name = "active account",
+                user_login = "wolnylogin",
+                user_account_active = 1,
+                user_email = "test@test",
+                user_ban = false
+            });
+            listOfUsers.Add(new User
+            {
+                user_id = 0,
+                user_name = "unactive account",
+                user_login = "zajety",
+                user_account_active = 0,
+                user_email = "test_test",
+                user_ban = true
+            });
+            return listOfUsers;
+        }
         public bool AddUser(User user)
         {
             if ((user.user_id == 1) && (user.user_name == "test") && (user.user_login == "wolnylogin"))
@@ -46,29 +70,11 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             return true;
         }
 
-        private List<User> getListOfUsers()
+        public bool IsAccountHaveBan(int id_user)
         {
-            List<User> listOfUsers = new List<User>();
-            listOfUsers.Add(
-            new User
-            {
-                user_id = 1,
-                user_name = "active account",
-                user_login = "wolnylogin",
-                user_account_active = 1,
-                user_email = "test@test",
-                user_ban = false
-            });
-            listOfUsers.Add(new User
-            {
-                user_id = 0,
-                user_name = "unactive account",
-                user_login = "zajety",
-                user_account_active = 0,
-                user_email = "test_test",
-                user_ban = true
-            });
-            return listOfUsers; 
+            if (getListOfUsers().Where(x => x.user_id == id_user).FirstOrDefault().user_ban)
+                return true;
+            return false;
         }
     }
 }

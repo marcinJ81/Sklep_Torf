@@ -71,8 +71,17 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             Assert.IsTrue(result);
         }
         [Test]
-        [Ignore("not implemented")]
-        public void ShouldNotSendVerificationEmail_WhenAccountDoNotHaveBan()
+        public void ShouldNotSendVerificationEmail_WhenAccountHaveBan()
+        {
+            //given
+            int user_id = 0;
+            //when
+            bool result = userRegistration.SendVerificationEmail(user_id);
+            //then
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void ShouldSendVerificationEmail_WhenAccountDoNotHaveBan()
         {
             //given
             int user_id = 1;

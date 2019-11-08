@@ -41,6 +41,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             {
                 return false;
             }
+            if (usersRepository.IsAccountHaveBan(id_user) == true)
+            {
+                return false;
+            }
             return true;
         }
         #endregion

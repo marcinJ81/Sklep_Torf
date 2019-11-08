@@ -20,6 +20,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
             throw new NotImplementedException();
         }
 
+        public bool IsAccountHaveBan(int id_user)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsThereAUserExist(int id_user)
         {
             throw new NotImplementedException();

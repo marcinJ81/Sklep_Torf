@@ -11,5 +11,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         User SearchUser(int user_id);
         bool IsThereAUserExist(int id_user);
         bool IsAccountActive(int id_user);
+        bool IsAccountHaveBan(int id_user);
     }
 }
