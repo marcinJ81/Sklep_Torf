@@ -50,5 +50,18 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //then
             Assert.IsFalse(result);
         }
+
+
+        [Test]
+        public void ShouldNotSendVerificationEmail_WhenAccountIsNotActive()
+        {
+            //given
+           
+            //when
+           
+            //then
+           
+        }
+
     }
 }
