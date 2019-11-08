@@ -12,19 +12,18 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
     {
         private IUserRegistration userRegistration;
         private Fake_UserLoginAvability fake_UserLoginAvability;
+        private Fake_RequestVerificationAccount fake_verificationAccount;
         private IUsersRepository userRepository;
-        private List<User> users;
-        public RetryTheVerificationTests()
-        {
-            this.users = new List<User>();
-        }
         [SetUp]
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
             this.userRepository = new Fake_UserRepositoryForTest();
-            this.userRegistration = new UserRegistration(userRepository, fake_UserLoginAvability);
-            
+            this.fake_verificationAccount = new Fake_RequestVerificationAccount();
+            this.userRegistration = new UserRegistration(
+                                    userRepository, 
+                                    fake_UserLoginAvability,
+                                    fake_verificationAccount);
         }
 
         [Test]
@@ -89,6 +88,16 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             bool result = userRegistration.SendVerificationEmail(user_id);
             //then
             Assert.IsTrue(result);
+        }
+        [Test]
+        public void ShouldSendVerificationEmail_WhenAccountDoNotHaveRequestForVerification()
+        {
+            //given
+            int user_id = 0;
+            //when
+            bool result = userRegistration.SendVerificationEmail(user_id);
+            //then
+            Assert.IsFalse(result);
         }
 
     }

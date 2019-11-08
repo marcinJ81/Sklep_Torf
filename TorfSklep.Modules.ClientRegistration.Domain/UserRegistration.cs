@@ -7,11 +7,22 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         private readonly ICheckingAvailabilityUserLogin availabilityUserName;
         private readonly IUsersRepository usersRepository;
+        private readonly IVerificationAccount requestVerificationAccount; 
 
-        public UserRegistration(IUsersRepository usersRepository, ICheckingAvailabilityUserLogin availabilityUserName)
+        public UserRegistration(IUsersRepository usersRepository, 
+                                ICheckingAvailabilityUserLogin availabilityUserName)
         {
             this.usersRepository = usersRepository;
             this.availabilityUserName = availabilityUserName;
+        }
+        public UserRegistration(IUsersRepository usersRepository,
+                                ICheckingAvailabilityUserLogin availabilityUserName,
+                                IVerificationAccount requestVerificationAccount)
+        : this(usersRepository,availabilityUserName)
+        {
+            this.usersRepository = usersRepository;
+            this.availabilityUserName = availabilityUserName;
+            this.requestVerificationAccount = requestVerificationAccount;
         }
         //methods
         #region Methods
@@ -42,6 +53,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
                 return false;
             }
             if (usersRepository.IsAccountHaveBan(id_user) == true)
+            {
+                return false;
+            }
+            if (requestVerificationAccount.UserIsInList(id_user) == true)
             {
                 return false;
             }
