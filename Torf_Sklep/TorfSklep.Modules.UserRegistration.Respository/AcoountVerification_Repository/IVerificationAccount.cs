@@ -7,5 +7,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository
     public interface IVerificationAccount
     {
         bool UserIsInList(int id_user);
+        bool AddAccountToVerification(int id_user);
     }
 }

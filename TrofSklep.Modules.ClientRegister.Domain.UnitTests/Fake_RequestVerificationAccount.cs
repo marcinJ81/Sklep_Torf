@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.UserRegistration.Respository;
 
-namespace TorfSklep.Modules.UserRegistration.Respository.AcoountVerification_Repository
+namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
-    public class OrderVerificationAccount : IVerificationAccount
+    public class Fake_RequestVerificationAccount : IVerificationAccount
     {
         public bool UserIsInList(int id_user)
         {
