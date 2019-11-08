@@ -33,7 +33,11 @@ namespace TorfSklep.Modules.UserRegistration.Domain
 
         public bool SendVerificationEmail(int id_user)
         {
-            if (!usersRepository.IsThereAUserExist(id_user))
+            if (usersRepository.IsThereAUserExist(id_user) == false)
+            {
+                return false;
+            }
+            if (usersRepository.IsAccountActive(id_user) == false)
             {
                 return false;
             }

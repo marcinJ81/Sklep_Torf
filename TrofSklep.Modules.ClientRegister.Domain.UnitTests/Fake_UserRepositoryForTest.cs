@@ -22,7 +22,14 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         public User SearchUser(int user_id)
         {
-            return new User() { user_id = 1, user_name = "test", user_login = "wolnylogin" };
+            return new User()
+            {
+                user_id = 1,
+                user_name = "test",
+                user_login = "wolnylogin",
+                user_account_active = 1,
+                user_email = "test@test"
+            };
         }
        public bool IsThereAUserExist(int id_user)
         {
@@ -31,6 +38,11 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             return false;
         }
 
-
+        public bool IsAccountActive(int id_user)
+        {
+            if (id_user == 0)
+                return false;
+            return true;
+        }
     }
 }

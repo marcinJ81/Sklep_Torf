@@ -10,5 +10,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         bool DeleteUser(int user_id);
         User SearchUser(int user_id);
         bool IsThereAUserExist(int id_user);
+        bool IsAccountActive(int id_user);
     }
 }

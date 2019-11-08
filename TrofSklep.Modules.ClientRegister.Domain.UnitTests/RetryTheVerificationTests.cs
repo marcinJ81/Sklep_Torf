@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Respository;
@@ -12,29 +13,41 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         private IUserRegistration userRegistration;
         private Fake_UserLoginAvability fake_UserLoginAvability;
         private IUsersRepository userRepository;
-        private User users;
-
+        private List<User> users;
+        public RetryTheVerificationTests()
+        {
+            this.users = new List<User>();
+        }
         [SetUp]
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
             this.userRepository = new Fake_UserRepositoryForTest();
             this.userRegistration = new UserRegistration(userRepository, fake_UserLoginAvability);
-            this.users = new User()
+            this.users.Add(
+            new User
             {
                 user_id = 1,
                 user_name = "test",
                 user_login = "wolnylogin",
                 user_account_active = 1,
                 user_email = "test@test"
-            };
+            });
+            this.users.Add(new User
+            {
+                user_id = 0,
+                user_name = "unactive user",
+                user_login = "zajety",
+                user_account_active = 0,
+                user_email = "test_test"
+            });
         }
 
         [Test]
         public void ShouldSendVerificationEmail_WhenAccountIsRegister()
         {
             //given
-            int user_id = this.users.user_id;
+            int user_id = this.users.Where(x => x.user_id == 1).FirstOrDefault().user_id;
             //when
             bool result = userRegistration.SendVerificationEmail(user_id);
             //then
@@ -44,7 +57,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSendVerificationEmail_WhenAccountIsNotRegister()
         {
             //given
-            int user_id = 0;
+            int user_id = this.users.Where(x => x.user_id == 0).FirstOrDefault().user_id; 
             //when
             bool result = userRegistration.SendVerificationEmail(user_id);
             //then
@@ -56,12 +69,27 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSendVerificationEmail_WhenAccountIsNotActive()
         {
             //given
-           
+            int user_id = this.users.Where(x => x.user_id == 0).FirstOrDefault().user_id; 
+            //and
+            int user_active = this.users.Where(x => x.user_id == 0).FirstOrDefault().user_account_active;
+            Assert.AreEqual(user_active, 0);
             //when
-           
+            bool result = userRegistration.SendVerificationEmail(user_id);
             //then
-           
+            Assert.IsFalse(result);
         }
-
+        [Test]
+        public void ShouldSendVerificationEmail_WhenAccountIsActive()
+        {
+            //given
+            int user_id = this.users.Where(x => x.user_id == 1).FirstOrDefault().user_id;
+            //and
+            int user_active = this.users.Where(x => x.user_id == 1).FirstOrDefault().user_account_active;
+            Assert.AreEqual(user_active, 1);
+            //when
+            bool result = userRegistration.SendVerificationEmail(user_id);
+            //then
+            Assert.IsTrue(result);
+        }
     }
 }
