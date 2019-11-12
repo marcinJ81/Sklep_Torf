@@ -4,7 +4,7 @@ namespace Torf_Sklep.Infrastructure.EmailSystem
 {
     public class MailSystem : ISendEmail
     {
-        public bool SendEmail(string email_adres)
+        public bool SendEmail(int id_user)
         {
             throw new NotImplementedException();
         }

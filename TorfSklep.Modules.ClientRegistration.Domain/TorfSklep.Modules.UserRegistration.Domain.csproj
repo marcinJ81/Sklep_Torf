@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Torf_Sklep\TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj" />
+    <ProjectReference Include="..\Torf_Sklep\Torf_Sklep.Infrastructure.EmailSystem\Torf_Sklep.Infrastructure.EmailSystem.csproj" />
   </ItemGroup>
 
 </Project>

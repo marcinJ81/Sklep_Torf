@@ -1,4 +1,5 @@
 ﻿using System;
+using Torf_Sklep.Infrastructure.EmailSystem;
 using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain
@@ -7,7 +8,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         private readonly ICheckingAvailabilityUserLogin availabilityUserName;
         private readonly IUsersRepository usersRepository;
-        private readonly IVerificationAccount requestVerificationAccount; 
+        private readonly IVerificationAccount requestVerificationAccount;
+        private readonly ISendEmail mailSystem;
 
         public UserRegistration(IUsersRepository usersRepository, 
                                 ICheckingAvailabilityUserLogin availabilityUserName)
@@ -17,13 +19,17 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         }
         public UserRegistration(IUsersRepository usersRepository,
                                 ICheckingAvailabilityUserLogin availabilityUserName,
-                                IVerificationAccount requestVerificationAccount)
+                                IVerificationAccount requestVerificationAccount,
+                                ISendEmail mailSystem)
         : this(usersRepository,availabilityUserName)
         {
             this.usersRepository = usersRepository;
             this.availabilityUserName = availabilityUserName;
             this.requestVerificationAccount = requestVerificationAccount;
+            this.mailSystem = mailSystem;
         }
+
+
         //methods
         #region Methods
         public bool RegisterUser(User user)
@@ -36,7 +42,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             return result;
         }
        
-        public void WerifyTheAccount() { }
+        public bool VerifyTheAccount()
+        {
+            throw new NotImplementedException();
+        }
         public void AssignAnExternalIdentifier()
         {
             throw new NotImplementedException();
@@ -44,6 +53,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
 
         public bool SendVerificationEmail(int id_user)
         {
+            if (requestVerificationAccount.UserIsInList(id_user) == true)
+            {
+                return false;
+            }
             if (usersRepository.IsThereAUserExist(id_user) == false)
             {
                 return false;
@@ -56,11 +69,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             {
                 return false;
             }
-            if (requestVerificationAccount.UserIsInList(id_user) == true)
-            {
-                return false;
-            }
-            return true;
+            
+            return mailSystem.SendEmail(id_user);
         }
         #endregion
     }

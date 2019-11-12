@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Torf_Sklep.Infrastructure.EmailSystem;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Respository;
 
@@ -14,16 +15,19 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         private Fake_UserLoginAvability fake_UserLoginAvability;
         private Fake_RequestVerificationAccount fake_verificationAccount;
         private IUsersRepository userRepository;
+        private Fake_MailSystem fake_sendEmail;
         [SetUp]
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
             this.userRepository = new Fake_UserRepositoryForTest();
             this.fake_verificationAccount = new Fake_RequestVerificationAccount();
+            this.fake_sendEmail = new Fake_MailSystem();
             this.userRegistration = new UserRegistration(
                                     userRepository, 
                                     fake_UserLoginAvability,
-                                    fake_verificationAccount);
+                                    fake_verificationAccount,
+                                    fake_sendEmail);
         }
 
         [Test]
