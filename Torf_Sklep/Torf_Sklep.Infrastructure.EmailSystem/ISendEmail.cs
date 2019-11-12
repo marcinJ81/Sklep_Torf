@@ -8,5 +8,6 @@ namespace Torf_Sklep.Infrastructure.EmailSystem
     public interface ISendEmail
     {
         bool SendEmail(int id_user);
+        bool IsTheVerificationTokenValid(int user_id);
     }
 }

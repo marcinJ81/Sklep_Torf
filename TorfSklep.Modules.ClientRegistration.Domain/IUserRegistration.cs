@@ -9,7 +9,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         bool RegisterUser(User user);
         bool SendVerificationEmail(int id_user);
-        bool VerifyTheAccount();
+        bool VerifyTheAccount(int id_user);
         bool AssignAnExternalIdentifier(int id_user);
     }
 }

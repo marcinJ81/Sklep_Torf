@@ -26,5 +26,15 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         }
 
+        [Test]
+        [Ignore("Not implemented")]
+        public void ShouldVerificationToken_WhenIsValid()
+        {
+            //given
+            //when
+            //then
+
+        }
+
     }
 }
