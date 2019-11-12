@@ -19,7 +19,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
                 user_login = "wolnylogin",
                 user_account_active = 1,
                 user_email = "test@test",
-                user_ban = false
+                user_ban = false,
+                external_id = "1234"
 
             });
             listOfUsers.Add(new User
@@ -29,7 +30,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
                 user_login = "zajety",
                 user_account_active = 0,
                 user_email = "test_test",
-                user_ban = true
+                user_ban = true,
+                external_id =""
             });
             return listOfUsers;
         }
@@ -80,7 +82,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         public bool IsExternalIDSet(int id_user)
         {
-            throw new NotImplementedException();
+            if (getListOfUsers().Where(x => x.user_id == id_user).FirstOrDefault().external_id.Length == 0)
+                return false;
+            return true;
         }
     }
 }

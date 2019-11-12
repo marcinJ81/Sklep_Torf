@@ -49,7 +49,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         }
         public bool AssignAnExternalIdentifier(int id_user)
         {
-            throw new NotImplementedException();
+            if (usersRepository.IsExternalIDSet(id_user) == false)
+                return true;
+            return false;
         }
 
         public bool SendVerificationEmail(int id_user)

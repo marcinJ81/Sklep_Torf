@@ -17,22 +17,13 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         [SetUp]
         public void Setup()
         {
-           
-           
+            this.fake_UserLoginAvability = new Fake_UserLoginAvability();
+            this.userRepository = new Fake_UserRepositoryForTest();
+            this.userRegistration = new UserRegistration(userRepository, fake_UserLoginAvability);
         }
 
         [Test]
         public void ShouldSetExternalID_WhenIDNotSet()
-        {
-            //given
-            int id_user = 1;
-            //when
-            bool result = userRegistration.AssignAnExternalIdentifier(id_user);
-            //then
-            Assert.IsTrue(result);
-        }
-        [Test]
-        public void ShouldNotSetExternalID_WhenIDSet()
         {
             //given
             int id_user = 0;
@@ -40,6 +31,16 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             bool result = userRegistration.AssignAnExternalIdentifier(id_user);
             //then
             Assert.IsTrue(result);
+        }
+        [Test]
+        public void ShouldNotSetExternalID_WhenIDIsSet()
+        {
+            //given
+            int id_user = 1;
+            //when
+            bool result = userRegistration.AssignAnExternalIdentifier(id_user);
+            //then
+            Assert.IsFalse(result);
         }
     }
 }
