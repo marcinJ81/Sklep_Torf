@@ -1,5 +1,6 @@
 ﻿using System;
 using Torf_Sklep.Infrastructure.EmailSystem;
+using TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions;
 using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain
@@ -10,7 +11,12 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         private readonly IUsersRepository usersRepository;
         private readonly IVerificationAccount requestVerificationAccount;
         private readonly ISendEmail mailSystem;
+        private readonly IGenerateUserId<string> generatorUserId;
 
+        public UserRegistration(IGenerateUserId<string> generatorId)
+        {
+            this.generatorUserId = generatorId;
+        }
         public UserRegistration(IUsersRepository usersRepository, 
                                 ICheckingAvailabilityUserLogin availabilityUserName)
         {
@@ -46,7 +52,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         {
             throw new NotImplementedException();
         }
-        public void AssignAnExternalIdentifier()
+        public bool AssignAnExternalIdentifier(int id_user)
         {
             throw new NotImplementedException();
         }
@@ -68,8 +74,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             if (usersRepository.IsAccountHaveBan(id_user) == true)
             {
                 return false;
-            }
-            
+            }            
             return mailSystem.SendEmail(id_user);
         }
         #endregion

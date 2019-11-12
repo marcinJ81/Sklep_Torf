@@ -10,6 +10,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         bool RegisterUser(User user);
         bool SendVerificationEmail(int id_user);
         bool VerifyTheAccount();
-        void AssignAnExternalIdentifier();
+        bool AssignAnExternalIdentifier(int id_user);
     }
 }
