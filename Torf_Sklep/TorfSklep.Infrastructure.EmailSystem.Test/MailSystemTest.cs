@@ -1,10 +1,7 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using NUnit.Framework;
 using Torf_Sklep.Infrastructure.EmailSystem;
 
-namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
+namespace Tests
 {
     public class MailSystemTest
     {
@@ -13,7 +10,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         [SetUp]
         public void Setup()
         {
-            this.sendEmail = new MailSystem();  
+            this.sendEmail = new MailSystem();
         }
 
         [Test]
@@ -23,7 +20,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             //when
             //then
-
         }
 
         [Test]
@@ -33,7 +29,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             //when
             //then
-
         }
 
     }

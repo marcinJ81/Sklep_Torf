@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailSystem", "EmailSystem", "{E07491CC-DAFE-4910-A957-320517FD6A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torf_Sklep.Infrastructure.EmailSystem", "Torf_Sklep.Infrastructure.EmailSystem\Torf_Sklep.Infrastructure.EmailSystem.csproj", "{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torf_Sklep.Infrastructure.EmailSystem", "Torf_Sklep.Infrastructure.EmailSystem\Torf_Sklep.Infrastructure.EmailSystem.csproj", "{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Infrastructure.EmailSystem.Test", "TorfSklep.Infrastructure.EmailSystem.Test\TorfSklep.Infrastructure.EmailSystem.Test.csproj", "{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{0AB101AE-8E92-4EB6-B8FC-E5A8188AD028} = {C3CA8B39-22A9-4947-800E-7AE5BDA64F23}
 		{E07491CC-DAFE-4910-A957-320517FD6A5D} = {18A473D8-AAFF-4914-8B72-A3BEDB929DE1}
 		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA} = {E07491CC-DAFE-4910-A957-320517FD6A5D}
+		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9} = {5EFDDE3F-8A7A-4AC5-BB53-F718B2183E6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {067F9518-2BA6-4932-8433-A846678834A5}
