@@ -103,6 +103,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //then
             Assert.IsFalse(result);
         }
+       
+
 
     }
 }

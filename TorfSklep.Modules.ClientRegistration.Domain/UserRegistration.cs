@@ -45,8 +45,14 @@ namespace TorfSklep.Modules.UserRegistration.Domain
        
         public bool VerifyTheAccount(int id_user)
         {
-            if (this.mailSystem.IsTheVerificationTokenValid(id_user) == false)
+            if (requestVerificationAccount.UserIsInList(id_user) == true)
+            {
                 return false;
+            }
+            if (this.mailSystem.IsTheVerificationTokenValid(id_user) == false)
+            {
+                return false;
+            }
             return true;
         }
         public bool AssignAnExternalIdentifier(int id_user)
