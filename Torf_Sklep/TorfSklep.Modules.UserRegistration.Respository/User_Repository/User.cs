@@ -12,5 +12,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public string user_email { get; set; }
         public int user_account_active { get; set; }
         public bool user_ban { get; set; }
+        public string external_id { get; set; }
     }
 }

@@ -11,12 +11,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         private readonly IUsersRepository usersRepository;
         private readonly IVerificationAccount requestVerificationAccount;
         private readonly ISendEmail mailSystem;
-        private readonly IGenerateUserId<string> generatorUserId;
 
-        public UserRegistration(IGenerateUserId<string> generatorId)
-        {
-            this.generatorUserId = generatorId;
-        }
         public UserRegistration(IUsersRepository usersRepository, 
                                 ICheckingAvailabilityUserLogin availabilityUserName)
         {

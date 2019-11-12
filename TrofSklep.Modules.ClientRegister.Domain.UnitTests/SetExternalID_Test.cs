@@ -3,18 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions;
+using TorfSklep.Modules.UserRegistration.Domain.Tests;
+using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
    public class SetExternalID_Test
     {
         private IUserRegistration userRegistration;
-        private IGenerateUserId<string> generatorID;
+        private Fake_UserLoginAvability fake_UserLoginAvability;
+        private IUsersRepository userRepository;
+
         [SetUp]
         public void Setup()
         {
-            this.generatorID = new GeneratorId();
-            this.userRegistration = new UserRegistration(this.generatorID); 
+           
+           
         }
 
         [Test]
@@ -31,7 +35,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSetExternalID_WhenIDSet()
         {
             //given
-            int id_user = 1;
+            int id_user = 0;
             //when
             bool result = userRegistration.AssignAnExternalIdentifier(id_user);
             //then
