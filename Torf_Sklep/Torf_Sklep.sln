@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmailSystem", "EmailSystem"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torf_Sklep.Infrastructure.EmailSystem", "Torf_Sklep.Infrastructure.EmailSystem\Torf_Sklep.Infrastructure.EmailSystem.csproj", "{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Infrastructure.EmailSystem.Test", "TorfSklep.Infrastructure.EmailSystem.Test\TorfSklep.Infrastructure.EmailSystem.Test.csproj", "{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorfSklep.Infrastructure.EmailSystem.Test", "TorfSklep.Infrastructure.EmailSystem.Test\TorfSklep.Infrastructure.EmailSystem.Test.csproj", "{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
