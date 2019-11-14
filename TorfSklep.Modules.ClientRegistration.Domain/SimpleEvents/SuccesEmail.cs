@@ -5,16 +5,27 @@ using Torf_Sklep.Infrastructure.EmailSystem;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.SimpleEvents
 {
-    public class SuccesEmail : ISendSuccesEmail
+    public class SuccesEmail : IVerificationEmail
     {
         private ISendEmail sendEmail;
         public SuccesEmail(ISendEmail mailSystem)
         {
             this.sendEmail = mailSystem;
         }
-        public void SendSuccesEmail(int user_id)
+
+        public void InformTheCustomerAboutTheExtendedRegistrationTime(int user_id)
         {
-            sendEmail.SendEmail(user_id);
+            throw new NotImplementedException();
+        }
+
+        public bool SendEmailSuccesVerification(int user_id)
+        {
+            return sendEmail.SendEmail(user_id);
+        }
+
+        public bool SendVerifivcationEmail(int id_user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

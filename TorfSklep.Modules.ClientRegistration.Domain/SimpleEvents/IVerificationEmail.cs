@@ -8,5 +8,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         bool SendVerifivcationEmail(int id_user);
         bool SendEmailSuccesVerification(int id_user);
+        void InformTheCustomerAboutTheExtendedRegistrationTime(int user_id);
     }
 }

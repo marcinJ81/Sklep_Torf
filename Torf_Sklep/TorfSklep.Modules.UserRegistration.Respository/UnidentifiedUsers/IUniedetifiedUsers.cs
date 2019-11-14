@@ -7,7 +7,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
     public interface IUniedetifiedUsers
     {
         List<UnidentifiedUsers> GetUnidentifiedUsersList();
-        void AddUnidentifiedUser(int user_id, string reason, DateTime dateReason);
+        void AddUnidentifiedUser(int user_id, Reason reason, DateTime dateReason);
         void DeleteUserFromUnidentifiedList(int user_id);
     }
 }
