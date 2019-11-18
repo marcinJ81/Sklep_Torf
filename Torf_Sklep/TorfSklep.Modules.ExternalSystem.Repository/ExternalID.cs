@@ -26,6 +26,7 @@ namespace TorfSklep.Modules.ExternalSystem.Repository
                 external_numberOfAttempts = number_Attempts,
                 user_id = user_id
             });
+
         }
 
         public int GetNumberOfAttempts(int user_id)
