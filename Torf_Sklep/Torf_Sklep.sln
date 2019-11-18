@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Torf_Sklep.Infrastructure.E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorfSklep.Infrastructure.EmailSystem.Test", "TorfSklep.Infrastructure.EmailSystem.Test\TorfSklep.Infrastructure.EmailSystem.Test.csproj", "{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Module.UserRegistration.Repository.UTest", "TorfSklep.Module.UserRegistration.Repository.UTest\TorfSklep.Module.UserRegistration.Repository.UTest.csproj", "{7441DFEF-2BDA-459D-9714-89B425357E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorfSklep.Module.UserRegistration.Repository.UTest", "TorfSklep.Module.UserRegistration.Repository.UTest\TorfSklep.Module.UserRegistration.Repository.UTest.csproj", "{7441DFEF-2BDA-459D-9714-89B425357E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Modules.ExternalSystem.Repository", "TorfSklep.Modules.ExternalSystem.Repository\TorfSklep.Modules.ExternalSystem.Repository.csproj", "{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{7441DFEF-2BDA-459D-9714-89B425357E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7441DFEF-2BDA-459D-9714-89B425357E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7441DFEF-2BDA-459D-9714-89B425357E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{6DD7D20A-50AF-4D51-B163-B84F9CE90DCA} = {E07491CC-DAFE-4910-A957-320517FD6A5D}
 		{A5F94CD7-DCFB-4C66-9DFA-EF17712BD3A9} = {5EFDDE3F-8A7A-4AC5-BB53-F718B2183E6C}
 		{7441DFEF-2BDA-459D-9714-89B425357E8C} = {5EFDDE3F-8A7A-4AC5-BB53-F718B2183E6C}
+		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D} = {C3CA8B39-22A9-4947-800E-7AE5BDA64F23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {067F9518-2BA6-4932-8433-A846678834A5}
