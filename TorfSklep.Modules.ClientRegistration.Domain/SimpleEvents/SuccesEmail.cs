@@ -23,9 +23,5 @@ namespace TorfSklep.Modules.UserRegistration.Domain.SimpleEvents
             return sendEmail.SendEmail(user_id);
         }
 
-        public bool SendVerifivcationEmail(int id_user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
