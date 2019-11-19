@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TorfSklep.Modules.ClientRegistration.Domain\TorfSklep.Modules.UserRegistration.Domain.csproj" />
+    <ProjectReference Include="..\Torf_Sklep\TorfSklep.Modules.ExternalSystem.Repository\TorfSklep.Modules.ExternalSystem.Repository.csproj" />
     <ProjectReference Include="..\Torf_Sklep\TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj" />
   </ItemGroup>
 
