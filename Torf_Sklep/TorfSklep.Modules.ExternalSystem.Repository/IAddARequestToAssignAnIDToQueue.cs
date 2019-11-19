@@ -7,6 +7,6 @@ namespace TorfSklep.Modules.ExternalSystem.Repository
     public interface IAddARequestToAssignAnExternalIDToQueue
     {
         bool AddToQueue(int user_id);
-        int GetLastElementOfTheQueue();
+        int GetFirstElementOfTheQueue();
     }
 }

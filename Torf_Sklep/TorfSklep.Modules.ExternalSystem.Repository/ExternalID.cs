@@ -10,32 +10,38 @@ namespace TorfSklep.Modules.ExternalSystem.Repository
         private string external_id;
         private int external_numberOfAttempts;
         private int user_id;
-
+        private List<ExternalID> listOfOrdersAwaitingIdentifier;
         public ExternalID()
         {
-            this.list_userWithEternalId = new List<ExternalID>();
+            this.listOfOrdersAwaitingIdentifier = new List<ExternalID>();
         }
-
-        public List<ExternalID> list_userWithEternalId { get; }
-
-        public void AddExternalIDToList(string external_id, int number_Attempts, int user_id)
+        public void AddExternalIDToList(int number_Attempts, int user_id)
         {
-            this.list_userWithEternalId.Add(new ExternalID
+            this.listOfOrdersAwaitingIdentifier.Add(new ExternalID
             {
-                external_id = external_id,
+                external_id = String.Empty,
                 external_numberOfAttempts = number_Attempts,
                 user_id = user_id
             });
 
         }
-
         public int GetNumberOfAttempts(int user_id)
         {
-            if (!list_userWithEternalId.Any(x => x.user_id == user_id))
+            if (!listOfOrdersAwaitingIdentifier.Any(x => x.user_id == user_id))
             {
                 return 0;
             }
-            return list_userWithEternalId.Where(x => x.user_id == user_id).FirstOrDefault().external_numberOfAttempts;
+            return listOfOrdersAwaitingIdentifier.Where(x => x.user_id == user_id).FirstOrDefault().external_numberOfAttempts;
+        }
+
+        public List<ExternalID> list_UsersWaitingForId()
+        {
+            return listOfOrdersAwaitingIdentifier.Where(x => String.IsNullOrEmpty(x.external_id) == true).ToList();                                   
+        }
+
+        public List<ExternalID> list_userWithEternalId()
+        {
+            return listOfOrdersAwaitingIdentifier.Where(x => String.IsNullOrEmpty(x.external_id) == false).ToList();
         }
     }
 
