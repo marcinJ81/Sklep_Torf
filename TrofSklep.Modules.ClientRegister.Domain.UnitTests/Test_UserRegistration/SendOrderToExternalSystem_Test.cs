@@ -29,5 +29,27 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests.Test_UserRegistrat
             //then
             Assert.IsTrue(result);
         }
+        [Test]
+        [Ignore("Not implemented")]
+        public void ShouldSendSecondTimeDataToExternalSystem_WhenNumberOfAttemptsIsGreaterThanOne()
+        {
+            //given
+            int user_id = 2;
+            //when
+            bool result = this.externalSytemComunication.SendOrderToExternalSystem(user_id);
+            //then
+            Assert.IsTrue(result);
+        }
+        [Test]
+        [Ignore("Not implemented")]
+        public void ShouldNotSendDataToExternalSystem_When_WhenNumberOfAttemptsIsEqualsLimit()
+        {
+            //given
+            int user_id = 3;
+            //when
+            bool result = this.externalSytemComunication.SendOrderToExternalSystem(user_id);
+            //then
+            Assert.IsFalse(result);
+        }
     }
 }
