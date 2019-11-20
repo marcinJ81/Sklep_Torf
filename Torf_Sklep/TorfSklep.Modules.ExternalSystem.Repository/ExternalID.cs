@@ -15,12 +15,13 @@ namespace TorfSklep.Modules.ExternalSystem.Repository
         {
             this.listOfOrdersAwaitingIdentifier = new List<ExternalID>();
         }
-        public void AddExternalIDToList(int number_Attempts, int user_id)
+        public void AddExternalIDToList(int user_id)
         {
+            int attempts = GetNumberOfAttempts(user_id);
             this.listOfOrdersAwaitingIdentifier.Add(new ExternalID
             {
                 external_id = String.Empty,
-                external_numberOfAttempts = number_Attempts,
+                external_numberOfAttempts = attempts,
                 user_id = user_id
             });
 
