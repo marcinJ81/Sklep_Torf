@@ -30,7 +30,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests.Test_UserRegistrat
             Assert.IsTrue(result);
         }
         [Test]
-        [Ignore("Not implemented")]
         public void ShouldSendSecondTimeDataToExternalSystem_WhenNumberOfAttemptsIsGreaterThanOne()
         {
             //given
@@ -41,7 +40,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests.Test_UserRegistrat
             Assert.IsTrue(result);
         }
         [Test]
-        [Ignore("Not implemented")]
         public void ShouldNotSendDataToExternalSystem_When_WhenNumberOfAttemptsIsEqualsLimit()
         {
             //given
