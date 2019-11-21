@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalSystemID", "Externa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.Infrastructure.ExternalSystemID", "TorfSklep.Infrastructure.ExternalSystemID\TorfSklep.Infrastructure.ExternalSystemID.csproj", "{42A66DF9-982E-42BD-8FD4-8B5FD5BFF988}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{875F80DB-30DD-4ADB-9EB9-8F065C16902D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorfSklep.DataBase", "TorfSklep.DataBase\TorfSklep.DataBase.csproj", "{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{42A66DF9-982E-42BD-8FD4-8B5FD5BFF988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42A66DF9-982E-42BD-8FD4-8B5FD5BFF988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42A66DF9-982E-42BD-8FD4-8B5FD5BFF988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +100,8 @@ Global
 		{2BFE6D87-4D66-4C0E-8F54-C9CC6C5F7D2D} = {C3CA8B39-22A9-4947-800E-7AE5BDA64F23}
 		{D0A8C08C-264E-4947-8F88-63598CE6B0B5} = {18A473D8-AAFF-4914-8B72-A3BEDB929DE1}
 		{42A66DF9-982E-42BD-8FD4-8B5FD5BFF988} = {D0A8C08C-264E-4947-8F88-63598CE6B0B5}
+		{875F80DB-30DD-4ADB-9EB9-8F065C16902D} = {18A473D8-AAFF-4914-8B72-A3BEDB929DE1}
+		{1AF62DBB-AEB2-4F40-B57A-74BF1AF2882D} = {875F80DB-30DD-4ADB-9EB9-8F065C16902D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {067F9518-2BA6-4932-8433-A846678834A5}
