@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Common;
 
 namespace TorfSklep.DataBase.BC_UserRegistration
 {
@@ -18,7 +18,7 @@ namespace TorfSklep.DataBase.BC_UserRegistration
         public string getconstring { get; }
         public DB_UserRegistration()
         {
-            connection = new SqliteConnection(CONSTRING);
+            connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
             CreateUser();
             this.getconstring = CONSTRING;
@@ -29,8 +29,10 @@ namespace TorfSklep.DataBase.BC_UserRegistration
         }
         private void CreateUser()
         {
-            connection.Execute(
-            @"CREATE TABLE IF NOT EXIST user_register
+            try
+            {
+                connection.Execute(
+                @"CREATE TABLE IF NOT EXISTS user_register
             (
                 user_id INTEGER IDENTITY PRIMARY KEY,
                 user_name VARCHAR NOT NULL,
@@ -39,9 +41,17 @@ namespace TorfSklep.DataBase.BC_UserRegistration
                 user_email VARCHAR NOT NULL,
                 user_account_active INT NOT NULL,
                 user_ban BIT NOT NULL,
-                external_id VARCHAR UNIQUE
+                external_id VARCHAR
             );
             ");
+            }
+            catch (DbException ex)
+            {
+                Console.WriteLine("GetType: {0}", ex.GetType());
+                Console.WriteLine("Source: {0}", ex.Source);
+                Console.WriteLine("ErrorCode: {0}", ex.ErrorCode);
+                Console.WriteLine("Message: {0}", ex.Message);
+            }
         }
     }
 }

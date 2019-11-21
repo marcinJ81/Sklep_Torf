@@ -12,4 +12,11 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\TorfSklep.Modules.ClientRegistration.Domain\TorfSklep.Modules.UserRegistration.Domain.csproj" />
+    <ProjectReference Include="..\..\TrofSklep.Modules.ClientRegister.Domain.UnitTests\TorfSklep.Modules.UserRegistration.Domain.UnitTests.csproj" />
+    <ProjectReference Include="..\TorfSklep.DataBase\TorfSklep.DataBase.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj" />
+  </ItemGroup>
+
 </Project>
