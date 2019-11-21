@@ -1,0 +1,44 @@
+﻿using System;
+using System.Data;
+using Dapper;
+using Microsoft.Data.Sqlite;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace TorfSklep.DataBase.BC_UserRegistration
+{
+    //some the code comes from DNA examples
+   public class DB_UserRegistration : IDBConnectionFactory
+    {
+        private readonly SqliteConnection connection;
+        public DB_UserRegistration()
+        {
+            connection = new SqliteConnection("DataSource=:memory:");
+            connection.Open();
+            CreateUser();
+        }
+        public IDbConnection GetOpenConnection()
+        {
+            return connection;
+        }
+        private void CreateUser()
+        {
+            connection.Execute(
+            @"CREATE TABLE IF NOT EXIST user_register
+            (
+                user_id INTEGER IDENTITY PRIMARY KEY,
+                user_name VARCHAR NOT NULL,
+                user_sname VARCHAR NOT NULL,
+                user_login VARCHAR UNIQUE,
+                user_email VARCHAR NOT NULL,
+                user_account_active INT NOT NULL,
+                user_ban BIT NOT NULL,
+                external_id VARCHAR UNIQUE
+            );
+            ");
+        }
+    }
+}
