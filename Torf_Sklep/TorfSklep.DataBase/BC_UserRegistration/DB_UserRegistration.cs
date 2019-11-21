@@ -11,14 +11,17 @@ using System.Threading.Tasks;
 namespace TorfSklep.DataBase.BC_UserRegistration
 {
     //some the code comes from DNA examples
-   public class DB_UserRegistration : IDBConnectionFactory
+    public class DB_UserRegistration : IDBConnectionFactory
     {
+        private const string CONSTRING = "DataSource=:memory:";
         private readonly SqliteConnection connection;
+        public string getconstring { get; }
         public DB_UserRegistration()
         {
-            connection = new SqliteConnection("DataSource=:memory:");
+            connection = new SqliteConnection(CONSTRING);
             connection.Open();
             CreateUser();
+            this.getconstring = CONSTRING;
         }
         public IDbConnection GetOpenConnection()
         {
