@@ -24,10 +24,11 @@ namespace Tests
         }
 
         [Test]
-        [Ignore("Not implemented")]
+        
         public void Test_GetUnidentifiedUsersList()
         {
-            Assert.Fail();
+            User result = userRepo.SearchUser(1);
+            Assert.Equals(1,result.user_id);
         }
         [Test]
         public void Test_AddUnidentifiedUser()

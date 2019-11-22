@@ -18,7 +18,7 @@ namespace TorfSklep.DataBase.BC_UserRegistration
         public string getconstring { get; }
         public DB_UserRegistration()
         {
-            connection = new SqliteConnection("DataSource=:memory:");
+            connection = new SqliteConnection(CONSTRING);
             connection.Open();
             CreateUser();
             this.getconstring = CONSTRING;

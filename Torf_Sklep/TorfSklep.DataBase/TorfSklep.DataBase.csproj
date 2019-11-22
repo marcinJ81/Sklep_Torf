@@ -77,6 +77,7 @@
     <Compile Include="BC_UserRegistration\DB_Methods.cs" />
     <Compile Include="BC_UserRegistration\DB_UserRegistration.cs" />
     <Compile Include="BC_UserRegistration\IDConnectionFactory.cs" />
+    <Compile Include="BC_UserRegistration\IRepoFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
