@@ -21,8 +21,8 @@ namespace TorfSklep.Module.UserRegistration.Repository.UTest
            
             string query = @"insert into user_register values
                             (1,'test_imie','test_nazwisko','test_login','test_email',1,0,NULL)";
-            int numberOfRows = dbMethods.db_QueryWithoutParam_IDbConnection(query);
-            if (numberOfRows > 0)
+            string userName = dbMethods.db_QueryWithoutParam_sqlConnectionAllInOne(query);
+            if (userName.Length > 0)
             {
                 return true;
             }

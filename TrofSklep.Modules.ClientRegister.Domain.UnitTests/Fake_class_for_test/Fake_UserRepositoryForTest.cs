@@ -75,6 +75,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         public bool IsAccountHaveBan(int id_user)
         {
+            
             if (getListOfUsers().Where(x => x.user_id == id_user).FirstOrDefault().user_ban)
                 return true;
             return false;
