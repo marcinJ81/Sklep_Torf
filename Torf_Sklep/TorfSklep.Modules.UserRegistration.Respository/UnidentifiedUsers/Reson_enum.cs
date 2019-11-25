@@ -9,4 +9,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
         Incorect_Data = 10,
         External_System_Not_Available = 20
     }
+
+    public enum TableName
+    {
+        User_table = 1
+    }
 }

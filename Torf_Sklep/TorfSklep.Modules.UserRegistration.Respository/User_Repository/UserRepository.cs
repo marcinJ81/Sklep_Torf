@@ -1,13 +1,27 @@
 ﻿using System;
+using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
+using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 
 namespace TorfSklep.Modules.UserRegistration.Respository
 {
 
-    public class UsersRepository : IUsersRepository
+    public class UsersRepository : AQueryDefinition, IUsersRepository
     {
+        private IQuerySqlite testDataBase;
+        public UsersRepository(TableName tableName)
+        :base(tableName)
+        {
+            this.testDataBase = new TestDataBase();
+        }
         public bool AddUser(User user)
         {
-            throw new NotImplementedException();
+            string insertQuery = @"insert into user_register values
+                            (1,'test_imie','test_nazwisko','test_login','test_email',1,0,NULL)";
+
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(createTable, insertQuery, selectUserTable, 3);
+            if (result.Count == 2)
+                return true;
+            return false;
         }
 
         public bool DeleteUser(int user_id)
