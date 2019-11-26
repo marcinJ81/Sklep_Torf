@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Torf_Sklep.Infrastructure.EmailSystem;
+using TorfSklep.Modules.UserRegistration.Domain.Interfaces;
 using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.Class
 {
-    public class SecondVerificationMail
+    public class SecondVerificationMail :ISendSecondVerificationEmail
     {
         private readonly IVerificationAccount requestVerificationAccount;
         private readonly IUsersRepository usersRepository;

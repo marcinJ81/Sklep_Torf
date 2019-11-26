@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Torf_Sklep.Infrastructure.EmailSystem;
+using TorfSklep.Modules.UserRegistration.Domain.Class;
+using TorfSklep.Modules.UserRegistration.Domain.Interfaces;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Respository;
 
@@ -11,11 +13,11 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
    public  class RetryTheVerificationTests
     {
-        private IUserRegistration userRegistration;
         private Fake_UserLoginAvability fake_UserLoginAvability;
         private Fake_RequestVerificationAccount fake_verificationAccount;
         private IUsersRepository userRepository;
         private Fake_MailSystem fake_sendEmail;
+        private ISendSecondVerificationEmail sendSecondVerificationEmail;
         [SetUp]
         public void Setup()
         {
@@ -23,11 +25,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             this.userRepository = new Fake_UserRepositoryForTest();
             this.fake_verificationAccount = new Fake_RequestVerificationAccount();
             this.fake_sendEmail = new Fake_MailSystem();
-            this.userRegistration = new UserRegistration(
-                                    userRepository, 
-                                    fake_UserLoginAvability,
-                                    fake_verificationAccount,
-                                    fake_sendEmail);
+            this.sendSecondVerificationEmail = new SecondVerificationMail(fake_verificationAccount,userRepository,fake_sendEmail);
         }
 
         [Test]
@@ -36,7 +34,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 1;
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsTrue(result);
         }
@@ -46,7 +44,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 2; 
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsFalse(result);
         }
@@ -58,7 +56,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //and
             
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsFalse(result);
         }
@@ -69,7 +67,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             int user_id = 1;
        
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsTrue(result);
         }
@@ -79,7 +77,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 0;
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsFalse(result);
         }
@@ -89,7 +87,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 1;
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsTrue(result);
         }
@@ -99,7 +97,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 0;
             //when
-            bool result = userRegistration.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
             //then
             Assert.IsFalse(result);
         }
