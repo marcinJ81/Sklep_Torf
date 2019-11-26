@@ -36,5 +36,10 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
             return result;
 
         }
+
+        public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(string sqlCreateTable, string sqlInsert, string sqlSelect)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
