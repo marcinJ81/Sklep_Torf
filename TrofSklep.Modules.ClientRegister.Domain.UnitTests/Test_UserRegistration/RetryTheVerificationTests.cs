@@ -13,7 +13,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
    public  class RetryTheVerificationTests
     {
-        private Fake_UserLoginAvability fake_UserLoginAvability;
         private Fake_RequestVerificationAccount fake_verificationAccount;
         private IUsersRepository userRepository;
         private Fake_MailSystem fake_sendEmail;
@@ -21,7 +20,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         [SetUp]
         public void Setup()
         {
-            this.fake_UserLoginAvability = new Fake_UserLoginAvability();
             this.userRepository = new Fake_UserRepositoryForTest();
             this.fake_verificationAccount = new Fake_RequestVerificationAccount();
             this.fake_sendEmail = new Fake_MailSystem();

@@ -61,27 +61,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
                 return true;
             return false;
         }
-
-        public bool SendVerificationEmail(int id_user)
-        {
-            if (requestVerificationAccount.UserIsInList(id_user) == true)
-            {
-                return false;
-            }
-            if (usersRepository.IsThereAUserExist(id_user) == false)
-            {
-                return false;
-            }
-            if (usersRepository.IsAccountActive(id_user) == false)
-            {
-                return false;
-            }
-            if (usersRepository.IsAccountHaveBan(id_user) == true)
-            {
-                return false;
-            }            
-            return mailSystem.SendEmail(id_user);
-        }
         #endregion
     }
 }
