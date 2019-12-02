@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
     public abstract class AQueryDefinition
     {
+        private IQuerySqlite testDataBase;
         public string createTable { get; }
         public string selectUserTable { get; }
-        public AQueryDefinition(TableName tableName)
+
+        private AQueryDefinition()
+        {
+            this.testDataBase = new TestDataBase();
+        }
+        public AQueryDefinition(TableName tableName):
+            this()
         {
             if ((int)tableName == 1)
             {
@@ -29,7 +37,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             }
 
         }
-        public string getInsertQuery(User user)
+        private string getInsertQuery(User user)
         {
             string insertQuery = @"insert into user_register values"
                                 + "(" + user.user_id.ToString() + ",'" + user.user_name + "','" + user.user_sname + "','"
@@ -37,5 +45,15 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                 + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
             return insertQuery;
         }
+        public bool AddUser_InMemmoryBase(User user)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTable);
+            queryDictionary.Add("Insert", getInsertQuery(user));
+            queryDictionary.Add("Select", selectUserTable);
+
+            return false;
+        }
+
     }
 }

@@ -16,13 +16,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         }
         public bool AddUser(User user)
         {
-            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
-            queryDictionary.Add("Create", createTable);
-            queryDictionary.Add("Insert", getInsertQuery(user));
-            queryDictionary.Add("Select", selectUserTable);
-
-            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
-            if (result.Count == 2)
+            if (AddUser_InMemmoryBase(user))
                 return true;
             return false;
         }
