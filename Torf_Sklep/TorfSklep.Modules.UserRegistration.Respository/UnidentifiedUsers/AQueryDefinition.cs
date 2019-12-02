@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
@@ -52,6 +53,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Insert", getInsertQuery(user));
             queryDictionary.Add("Select", selectUserTable);
 
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+            if (result.Count == 2)
+                return true;
             return false;
         }
 
