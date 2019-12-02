@@ -59,5 +59,20 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             return false;
         }
 
+        public bool IsAccountActive_whenIdIsOne(int id_user)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTable);
+            queryDictionary.Add("Insert", getInsertQuery(new User()
+            {
+                user_id = 1,user_name = "test_name_user"
+            }));
+            queryDictionary.Add("Select", selectUserTable);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+            if (result.Any(x => x.Contains(id_user.ToString())))
+                return true;
+            return false;
+        }
+
     }
 }
