@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 
@@ -15,13 +16,12 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         }
         public bool AddUser(User user)
         {
-            string insertQuery = @"insert into user_register values"
-                                + "(" + user.user_id.ToString() + ",'" + user.user_name + "','" + user.user_sname + "','"
-                                + user.user_login +"','"+user.user_email+"',"+user.user_account_active.ToString()
-                                + "," + user.user_ban +","+"'"+user.external_id+ "'" +")";
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTable);
+            queryDictionary.Add("Insert", getInsertQuery(user));
+            queryDictionary.Add("Select", selectUserTable);
 
-
-            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(createTable, insertQuery, selectUserTable, 3);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
             if (result.Count == 2)
                 return true;
             return false;

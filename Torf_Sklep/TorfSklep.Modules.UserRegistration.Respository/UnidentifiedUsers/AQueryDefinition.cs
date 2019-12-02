@@ -29,5 +29,13 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             }
 
         }
+        public string getInsertQuery(User user)
+        {
+            string insertQuery = @"insert into user_register values"
+                                + "(" + user.user_id.ToString() + ",'" + user.user_name + "','" + user.user_sname + "','"
+                                + user.user_login + "','" + user.user_email + "'," + user.user_account_active.ToString()
+                                + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
+            return insertQuery;
+        }
     }
 }
