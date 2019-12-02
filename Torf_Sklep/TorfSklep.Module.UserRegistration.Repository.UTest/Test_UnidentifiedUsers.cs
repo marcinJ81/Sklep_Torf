@@ -24,9 +24,19 @@ namespace Tests
         public void Test_AddUnidentifiedUser()
         {
             //given
-
+            User user = new User()
+            {
+                user_name = "julian",
+                user_sname = "krol",
+                user_email = "julian@madagaskar.pl",
+                user_login = "kroljulian",
+                user_account_active = 1,
+                user_ban = false,
+                user_id = 1,
+                external_id = ""
+            };
             //when
-            bool result = userRepo.AddUser(new User());
+            bool result = userRepo.AddUser(user);
             //then
             Assert.IsTrue(result);
         }

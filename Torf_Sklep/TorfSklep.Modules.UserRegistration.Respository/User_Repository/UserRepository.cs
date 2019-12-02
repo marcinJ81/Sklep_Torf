@@ -15,8 +15,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         }
         public bool AddUser(User user)
         {
-            string insertQuery = @"insert into user_register values
-                            (1,'test_imie','test_nazwisko','test_login','test_email',1,0,NULL)";
+            string insertQuery = @"insert into user_register values"
+                                + "(" + user.user_id.ToString() + ",'" + user.user_name + "','" + user.user_sname + "','"
+                                + user.user_login +"','"+user.user_email+"',"+user.user_account_active.ToString()
+                                + "," + user.user_ban +","+"'"+user.external_id+ "'" +")";
+
 
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(createTable, insertQuery, selectUserTable, 3);
             if (result.Count == 2)

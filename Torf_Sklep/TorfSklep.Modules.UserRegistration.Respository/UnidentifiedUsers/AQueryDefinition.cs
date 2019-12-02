@@ -23,7 +23,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                     user_ban BIT NOT NULL,
                     external_id VARCHAR UNIQUE
                 );";
-                this.selectUserTable = @"select user_id, user_name,user_sname from user_register";
+                this.selectUserTable = @"select user_id, user_name,user_sname," +
+                                       "user_login,user_email, user_account_active " +
+                                       " user_ban, external_id from user_register";
             }
 
         }
