@@ -41,7 +41,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
             throw new NotImplementedException();
         }
 
-        public bool IsThereAUserExist(int id_user)
+        public bool IsThereAUserRegister(string name, string sname,string email)
         {
             throw new NotImplementedException();
         }

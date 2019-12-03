@@ -6,6 +6,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Interfaces
 {
     public interface ISendSecondVerificationEmail
     {
-        bool SendVerificationEmail(int id_user);
+        bool SendVerificationEmail(int id_user,string name,string sname, string email);
     }
 }

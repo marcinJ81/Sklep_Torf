@@ -59,9 +59,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
                 user_email = "test@test"
             };
         }
-       public bool IsThereAUserExist(int id_user)
+       public bool IsThereAUserRegister(string name,string sname,string email)
         {
-            if(getListOfUsers().Any(x => x.user_id == id_user))
+            if(getListOfUsers().Any(x => x.user_name == name))
                 return true;
             return false;
         }

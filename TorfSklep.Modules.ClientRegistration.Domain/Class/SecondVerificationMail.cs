@@ -19,16 +19,17 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Class
             this.requestVerificationAccount = requestVerificationAccount;
             this.mailSystem = mailSystem;
         }
-        public bool SendVerificationEmail(int id_user)
+        public bool SendVerificationEmail(int id_user,string name,string sname, string email)
         {
+            if (usersRepository.IsThereAUserRegister(name,sname,email) == false)
+            {
+                return false;
+            }
             if (requestVerificationAccount.UserIsInList(id_user) == true)
             {
                 return false;
             }
-            if (usersRepository.IsThereAUserExist(id_user) == false)
-            {
-                return false;
-            }
+           
             if (usersRepository.IsAccountActive(id_user) == false)
             {
                 return false;
