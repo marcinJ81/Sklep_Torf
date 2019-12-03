@@ -60,6 +60,52 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                 + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
             return insertQuery;
         }
+
+        private string InsertQueryAccountToverification()
+        {
+            string insertQuery = @"insert into user_account_to_verification values (1,1,1)";
+            return insertQuery;
+        }
+
+        public bool IsThereAUserExist_InMemmory(string name, string sname, string email)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTableUser);
+            queryDictionary.Add("Insert", getInsertQueryUser(new User()
+            {
+                user_id = 1,
+                user_name = "marcin",
+                user_sname = "juranek",
+                user_email = "test@test"
+            }));
+            queryDictionary.Add("Select", selectUserTable);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+
+            User user = new User();
+            string[] source = result[1].Split(new char[] { ',' });
+            user.user_id = int.Parse(source[0]);
+            user.user_name = source[1];
+            user.user_sname = source[2];
+            user.user_email = source[3];
+
+            if ((user.user_name == name) && (user.user_sname == sname) && (user.user_email == email))
+                return true;
+            return false;
+        }
+
+        public bool UserIsInListAccountToVerification(int id_user)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTableListAccount);
+            queryDictionary.Add("Insert", InsertQueryAccountToverification());
+            queryDictionary.Add("Select", selectListAccountTable);
+
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+            if (result.Count == 2)
+                return true;
+            return false;
+
+        }
         public bool AddUser_InMemmoryBase(User user)
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();

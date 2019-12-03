@@ -59,12 +59,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
                 user_email = "test@test"
             };
         }
-       public bool IsThereAUserExist(int id_user)
-        {
-            if(getListOfUsers().Any(x => x.user_id == id_user))
-                return true;
-            return false;
-        }
+
 
         public bool IsAccountActive(int id_user)
         {
@@ -85,6 +80,11 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             if (getListOfUsers().Where(x => x.user_id == id_user).FirstOrDefault().external_id.Length == 0)
                 return false;
             return true;
+        }
+
+        public bool IsThereAUserExist(string name, string surname, string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

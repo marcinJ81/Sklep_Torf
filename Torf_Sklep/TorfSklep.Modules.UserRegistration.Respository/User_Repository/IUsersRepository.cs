@@ -9,7 +9,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         bool AddUser(User user);
         bool DeleteUser(int user_id);
         User SearchUser(int user_id);
-        bool IsThereAUserExist(int id_user);
+        bool IsThereAUserExist(string name, string surname, string email);
         bool IsAccountActive(int id_user);
         bool IsAccountHaveBan(int id_user);
         bool IsExternalIDSet(int id_user);

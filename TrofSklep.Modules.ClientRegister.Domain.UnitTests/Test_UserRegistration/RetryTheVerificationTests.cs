@@ -18,6 +18,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         private IUsersRepository userRepository;
         private Fake_MailSystem fake_sendEmail;
         private ISendSecondVerificationEmail sendSecondVerificationEmail;
+        private string name = "marcin";
+        private string sname = "juranek";
+        private string email = "test@test";
         [SetUp]
         public void Setup()
         {
@@ -33,7 +36,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 1;
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id,name,sname,email);
             //then
             Assert.IsTrue(result);
         }
@@ -43,7 +46,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 2; 
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsFalse(result);
         }
@@ -55,7 +58,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //and
             
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsFalse(result);
         }
@@ -66,7 +69,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             int user_id = 1;
        
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsTrue(result);
         }
@@ -74,9 +77,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSendVerificationEmail_WhenAccountHaveBan()
         {
             //given
+           
             int user_id = 0;
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsFalse(result);
         }
@@ -86,7 +90,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 1;
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsTrue(result);
         }
@@ -96,7 +100,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int user_id = 0;
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id);
+            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsFalse(result);
         }

@@ -43,10 +43,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
             throw new NotImplementedException();
         }
 
-        public bool IsThereAUserExist(int id_user)
+        public bool IsThereAUserExist(string name, string sname, string email)
         {
+            if (base.IsThereAUserExist_InMemmory(name, sname, email))
+                return false;
             return true;
-            //throw new NotImplementedException();
         }
 
         public User SearchUser(int user_id)
