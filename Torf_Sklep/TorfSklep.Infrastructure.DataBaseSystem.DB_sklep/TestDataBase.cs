@@ -55,6 +55,12 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
             Microsoft.Data.Sqlite.SqliteCommand com1 = new SqliteCommand(queryString.Where(x => x.Key == "Insert").FirstOrDefault().Value, con);
             com1.ExecuteNonQuery();
 
+            if (queryString.Any(x => x.Key == "Delete"))
+            {
+                Microsoft.Data.Sqlite.SqliteCommand com4 = new SqliteCommand(queryString.Where(x => x.Key == "Insert").FirstOrDefault().Value, con);
+                com4.ExecuteNonQuery();
+            }
+
             Microsoft.Data.Sqlite.SqliteCommand com3 = new SqliteCommand(queryString.Where(x => x.Key == "Select").FirstOrDefault().Value, con);
             com3.ExecuteNonQuery();
 

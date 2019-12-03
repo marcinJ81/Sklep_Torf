@@ -28,7 +28,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         }
 
         [Test]
-        [Ignore("change repo")]
         public void ShouldSendVerificationEmail_WhenAccountIsRegister()
         {
             //given
@@ -39,7 +38,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             Assert.IsTrue(result);
         }
         [Test]
-        [Ignore("change repo")]
         public void ShouldNotSendVerificationEmail_WhenAccountIsNotRegister()
         {
             //given
@@ -53,7 +51,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSendVerificationEmail_WhenAccountIsNotActive()
         {
             //given
-            int user_id = 1;
+            int user_id = 5;
             //and
             
             //when

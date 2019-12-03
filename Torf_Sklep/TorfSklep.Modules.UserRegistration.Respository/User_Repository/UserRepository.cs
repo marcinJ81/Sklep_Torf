@@ -33,8 +33,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
         public bool IsAccountHaveBan(int id_user)
         {
+            if (IsAccountHaveBan_whenIdIsNotOne(id_user))
+                return false;
             return true;
-            //throw new NotImplementedException();
         }
 
         public bool IsExternalIDSet(int id_user)
