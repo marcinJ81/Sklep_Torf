@@ -33,10 +33,12 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldSendVerificationEmail_WhenAccountIsRegister()
         {
             //given
+            name = "active account";
             int user_id = 1;
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
+            
             Assert.IsTrue(result);
         }
         [Test]
@@ -66,7 +68,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         {
             //given
             int user_id = 1;
-       
+            name = "active account";
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
@@ -87,6 +89,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         {
             //given
             int user_id = 1;
+            name = "active account";
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
@@ -97,6 +100,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         {
             //given
             int user_id = 0;
+            name = "active account";
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
