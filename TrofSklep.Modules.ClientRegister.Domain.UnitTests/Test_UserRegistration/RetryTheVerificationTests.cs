@@ -17,7 +17,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         private Fake_RequestVerificationAccount fake_verificationAccount;
         private IUsersRepository userRepository;
         private Fake_MailSystem fake_sendEmail;
+        private IUsersRepository userFakeRepo;
         private ISendSecondVerificationEmail sendSecondVerificationEmail;
+        private ISendSecondVerificationEmail fakesendSecondVerificationEmail;
         private string name = "marcin";
         private string sname = "juranek";
         private string email = "test@test";
@@ -27,6 +29,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             this.userRepository = new UsersRepository(TableName.User_table);
             this.fake_verificationAccount = new Fake_RequestVerificationAccount();
             this.fake_sendEmail = new Fake_MailSystem();
+            this.userFakeRepo = new Fake_UserRepositoryForTest();
+            this.fakesendSecondVerificationEmail = new SecondVerificationMail(fake_verificationAccount, userFakeRepo, fake_sendEmail);
             this.sendSecondVerificationEmail = new SecondVerificationMail(fake_verificationAccount,userRepository,fake_sendEmail);
         }
 
@@ -34,6 +38,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldSendVerificationEmail_WhenAccountIsRegister()
         {
             //given
+            
             int user_id = 1;
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id,name,sname,email);
@@ -44,6 +49,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void ShouldNotSendVerificationEmail_WhenAccountIsNotRegister()
         {
             //given
+            name = "grzegorz";
             int user_id = 2; 
             //when
             bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
@@ -89,8 +95,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         {
             //given
             int user_id = 1;
+
             //when
-            bool result = sendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
+            bool result = fakesendSecondVerificationEmail.SendVerificationEmail(user_id, name, sname, email);
             //then
             Assert.IsTrue(result);
         }

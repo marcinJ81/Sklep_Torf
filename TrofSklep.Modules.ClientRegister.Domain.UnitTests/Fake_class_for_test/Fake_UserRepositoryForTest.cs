@@ -84,7 +84,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 
         public bool IsThereAUserExist(string name, string surname, string email)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

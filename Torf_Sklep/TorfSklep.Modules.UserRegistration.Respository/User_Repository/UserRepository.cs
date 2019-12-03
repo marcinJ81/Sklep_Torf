@@ -34,8 +34,8 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public bool IsAccountHaveBan(int id_user)
         {
             if (IsAccountHaveBan_whenIdIsNotOne(id_user))
-                return false;
-            return true;
+                return true;
+            return false;
         }
 
         public bool IsExternalIDSet(int id_user)
@@ -46,8 +46,8 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public bool IsThereAUserExist(string name, string sname, string email)
         {
             if (base.IsThereAUserExist_InMemmory(name, sname, email))
-                return false;
-            return true;
+                return true;
+            return false;
         }
 
         public User SearchUser(int user_id)

@@ -86,7 +86,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             user.user_id = int.Parse(source[0]);
             user.user_name = source[1];
             user.user_sname = source[2];
-            user.user_email = source[3];
+            user.user_email = source[4];
 
             if ((user.user_name == name) && (user.user_sname == sname) && (user.user_email == email))
                 return true;
@@ -125,13 +125,28 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Create", createTableUser);
             queryDictionary.Add("Insert", getInsertQueryUser(new User()
             {
-                user_id = 1,user_name = "test_name_user"
+                user_id = 1,
+                user_name = "marcin",
+                user_sname = "juranek",
+                user_login = "marcin.juranek",
+                user_email = "test@test",
+                user_account_active = 0
             }));
             queryDictionary.Add("Select", selectUserTable);
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
-            if (result.Any(x => x.Contains(id_user.ToString())))
-                return true;
-            return false;
+
+            User user = new User();
+            string[] source = result[1].Split(new char[] { ',' });
+            user.user_id = int.Parse(source[0]);
+            user.user_name = source[1];
+            user.user_sname = source[2];
+            user.user_login = source[3];
+            user.user_email = source[4];
+            user.user_account_active = int.Parse(source[5]);
+
+            if (user.user_account_active == 0)
+                return false;
+            return true;
         }
 
         public bool IsAccountHaveBan_whenIdIsNotOne(int id_user)
