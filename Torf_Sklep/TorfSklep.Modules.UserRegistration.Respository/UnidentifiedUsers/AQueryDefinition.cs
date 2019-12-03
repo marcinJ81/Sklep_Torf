@@ -51,7 +51,19 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Create", createTable);
             queryDictionary.Add("Insert", getInsertQuery(user));
             queryDictionary.Add("Select", selectUserTable);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
 
+            User userdb = new User();
+            string[] source = result[1].Split(new char[] { ',' });
+            userdb.user_id = int.Parse(source[0]);
+            userdb.user_name = source[1];
+            userdb.user_sname = source[2];
+            userdb.user_login = source[3];
+            userdb.user_email = source[4];
+            userdb.user_account_active = int.Parse(source[5]);
+
+            if ((userdb.user_name == user.user_name) && (userdb.user_email == user.user_email))
+                return true;
             return false;
         }
 

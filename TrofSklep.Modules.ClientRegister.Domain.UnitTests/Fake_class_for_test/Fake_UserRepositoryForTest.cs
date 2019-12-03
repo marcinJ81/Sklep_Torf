@@ -37,7 +37,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         }
         public bool AddUser(User user)
         {
-            if ((user.user_id == 1) && (user.user_name == "test") && (user.user_login == "wolnylogin"))
+            if ((user.user_id == 1) && (user.user_name == "julian") && (user.user_login == "wolnylogin"))
                 return true;
             else
                 return false;
