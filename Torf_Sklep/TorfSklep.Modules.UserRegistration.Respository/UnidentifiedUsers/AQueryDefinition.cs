@@ -22,8 +22,8 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                 this.testDataBase = new TestDataBase_InFile();
             }
         }
-        public AQueryDefinition(TableName tableName):
-            this()
+        public AQueryDefinition(TableName tableName, DataBaseType choise) :
+            this(choise)
         {
             if ((int)tableName == 1)
             {

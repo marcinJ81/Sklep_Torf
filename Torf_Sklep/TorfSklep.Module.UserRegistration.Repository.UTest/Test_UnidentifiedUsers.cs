@@ -10,7 +10,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            this.userRepo = new UsersRepository(TableName.User_table);
+            this.userRepo = new UsersRepository(TableName.User_table,DataBaseType.InMemmory);
         }
 
         [Test]

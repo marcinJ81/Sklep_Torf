@@ -15,7 +15,8 @@ namespace Tests
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
-            this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table);
+            this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
+                TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InMemmory);
             this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
         }
 
