@@ -13,7 +13,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 
         private AQueryDefinition()
         {
-            this.testDataBase = new TestDataBase();
+            this.testDataBase = new TestDataBase_InMemmory();
         }
         public AQueryDefinition(TableName tableName):
             this()

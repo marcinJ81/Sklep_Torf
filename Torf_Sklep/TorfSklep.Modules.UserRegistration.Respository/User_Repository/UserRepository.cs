@@ -12,7 +12,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public UsersRepository(TableName tableName)
         :base(tableName)
         {
-            this.testDataBase = new TestDataBase();
+            this.testDataBase = new TestDataBase_InMemmory();
         }
         public bool AddUser(User user)
         {
