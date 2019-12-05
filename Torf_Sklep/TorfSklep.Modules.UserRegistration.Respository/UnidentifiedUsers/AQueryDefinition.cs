@@ -11,9 +11,16 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
         public string createTable { get; }
         public string selectUserTable { get; }
 
-        private AQueryDefinition()
+        private AQueryDefinition(DataBaseType choise)
         {
-            this.testDataBase = new TestDataBase_InMemmory();
+            if ((int)choise == 0)
+            {
+                this.testDataBase = new TestDataBase_InMemmory();
+            }
+            if ((int)choise == 1)
+            {
+                this.testDataBase = new TestDataBase_InFile();
+            }
         }
         public AQueryDefinition(TableName tableName):
             this()

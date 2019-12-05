@@ -14,4 +14,10 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
     {
         User_table = 1
     }
+
+    public enum DataBaseType
+    {
+        InMemmory = 0,
+        InFile = 1
+    }
 }
