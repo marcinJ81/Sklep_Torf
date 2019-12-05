@@ -15,7 +15,7 @@ namespace Tests
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
-            this.userRepository = new Fake_UserRepositoryForTest();
+            this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table);
             this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
         }
 
@@ -24,7 +24,7 @@ namespace Tests
         {
             //given
                 string userLogin = "wolnylogin";
-                User users = new User() { user_id = 1, user_name = "test",user_login = userLogin};
+                User users = new User() { user_id = 1, user_name = "test",user_login = userLogin,user_email = "test@test"};
             //when
                 bool result = this.userRegistration.RegisterUser(users);
             //then
@@ -35,7 +35,7 @@ namespace Tests
         {
             //given
                 string loginName = "zajetyLogin";
-                User users = new User() { user_id = 1, user_name = "test", user_login = loginName };
+                User users = new User() { user_id = 1, user_name = "test", user_login = loginName, user_email = "test@test" };
                 bool result = this.userRegistration.RegisterUser(users);
                 Assert.IsFalse(result);
             //when
@@ -48,11 +48,9 @@ namespace Tests
         {
             //given
                 string loginName = "wolnylogin";
-                User users = new User() { user_id = 1, user_name = "test", user_login = loginName };
-                bool result = this.userRegistration.RegisterUser(users);
-                Assert.IsTrue(result);
+                User users = new User() { user_id = 1, user_name = "test", user_login = loginName, user_email = "test@test" };
             //when
-                result = this.userRegistration.RegisterUser(users);
+                bool result = this.userRegistration.RegisterUser(users);
             //then
                 Assert.IsTrue(result);
         }
@@ -63,14 +61,10 @@ namespace Tests
             //given
                 string loginName = "wolnylogin";
                 User users = new User() { user_id = 1, user_name = "test", user_login = loginName };
-                bool result = this.userRegistration.RegisterUser(users);
-                Assert.IsTrue(result);
-            //and
-                users.user_name = "brak";
             //when
-                result = this.userRegistration.RegisterUser(users);
+            bool result = this.userRegistration.RegisterUser(users);
             //then
-                Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
         
 

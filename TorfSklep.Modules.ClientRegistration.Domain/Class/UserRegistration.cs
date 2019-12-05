@@ -18,18 +18,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             this.usersRepository = usersRepository;
             this.availabilityUserName = availabilityUserName;
         }
-        public UserRegistration(IUsersRepository usersRepository,
-                                ICheckingAvailabilityUserLogin availabilityUserName,
-                                IVerificationAccount requestVerificationAccount,
-                                ISendEmail mailSystem)
-        : this(usersRepository,availabilityUserName)
-        {
-            this.usersRepository = usersRepository;
-            this.availabilityUserName = availabilityUserName;
-            this.requestVerificationAccount = requestVerificationAccount;
-            this.mailSystem = mailSystem;
-        }
-
 
         //methods
         #region Methods
