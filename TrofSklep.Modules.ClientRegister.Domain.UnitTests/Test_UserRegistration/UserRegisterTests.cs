@@ -16,7 +16,7 @@ namespace Tests
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
             this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
-                TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InMemmory);
+                TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
             this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
         }
 
@@ -49,7 +49,7 @@ namespace Tests
         {
             //given
                 string loginName = "wolnylogin";
-                User users = new User() { user_id = 1, user_name = "test", user_login = loginName, user_email = "test@test" };
+                User users = new User() { user_id = 3, user_name = "test", user_login = loginName, user_email = "test@test" };
             //when
                 bool result = this.userRegistration.RegisterUser(users);
             //then
@@ -61,7 +61,7 @@ namespace Tests
         {
             //given
                 string loginName = "wolnylogin";
-                User users = new User() { user_id = 1, user_name = "test", user_login = loginName };
+            User users = new User() { user_login = loginName };
             //when
             bool result = this.userRegistration.RegisterUser(users);
             //then

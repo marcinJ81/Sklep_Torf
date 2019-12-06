@@ -12,7 +12,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         :base(tableName,choice){ }
         public bool AddUser(User user)
         {
-            if (AddUser_InMemmoryBase(user))
+            if (AddUser_ToBase(user))
                 return true;
             return false;
         }
