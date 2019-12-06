@@ -19,7 +19,14 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
 
             string query = queryString.Where(x => x.Key == "Create").FirstOrDefault().Value;
             SqliteCommand com0 = new SqliteCommand(query, con);
-            com0.ExecuteNonQuery();
+            try
+            {
+                com0.ExecuteNonQuery();
+            }
+            catch (SqliteException ex)
+            {
+                string er = ex.Message;
+            }
 
             Microsoft.Data.Sqlite.SqliteCommand com1 = new SqliteCommand(queryString.Where(x => x.Key == "Insert").FirstOrDefault().Value, con);
             com1.ExecuteNonQuery();
@@ -41,9 +48,5 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
             return result;
         }
 
-        public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(string sqlCreateTable, string sqlInsert, string sqlSelect, int columnAmount)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

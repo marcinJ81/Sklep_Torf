@@ -9,12 +9,6 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
 {
     public class TestDataBase_InMemmory : IQuerySqlite
     {
-      
-        public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(string sqlCreateTable, string sqlInsert, string sqlSelect,int columnAmount)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(Dictionary<string,string> queryString)
         {
             if (!queryString.Any())

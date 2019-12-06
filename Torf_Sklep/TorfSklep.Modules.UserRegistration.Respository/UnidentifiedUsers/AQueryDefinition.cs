@@ -7,7 +7,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
     public abstract class AQueryDefinition
     {
-        private IQuerySqlite testDataBase;
+        protected IQuerySqlite testDataBase;
         public string createTable { get; }
         public string selectUserTable { get; }
 
@@ -27,7 +27,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
         {
             if ((int)tableName == 1)
             {
-                    this.createTable = @"CREATE TABLE user_register
+                    this.createTable = @"CREATE TABLE IF NOT EXISTS user_register
                 (
                     user_id INTEGER IDENTITY PRIMARY KEY,
                     user_name VARCHAR NOT NULL,
@@ -42,6 +42,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                        "user_login,user_email, user_account_active " +
                                        " user_ban, external_id from user_register";
             }
+            
 
         }
         private string getInsertQuery(User user)
