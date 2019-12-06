@@ -7,19 +7,26 @@ using System.Threading.Tasks;
 
 namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
 {
-    public class TestDataBase_InMemmory : IQuerySqlite
+   public class TestDataBase_InFile : IQuerySqlite
     {
-        public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(Dictionary<string,string> queryString)
+        public List<string> db_QueryWithoutParam_sqlConnectionAllInOne(Dictionary<string, string> queryString)
         {
             if (!queryString.Any())
                 return null;
 
-            SqliteConnection con = new SqliteConnection(@"DataSource=:memory:");
+            SqliteConnection con = new SqliteConnection(@"DataSource=E:\SQLite_sklep\test.db");
             con.Open();
 
             string query = queryString.Where(x => x.Key == "Create").FirstOrDefault().Value;
             SqliteCommand com0 = new SqliteCommand(query, con);
-            com0.ExecuteNonQuery();
+            try
+            {
+                com0.ExecuteNonQuery();
+            }
+            catch (SqliteException ex)
+            {
+                string er = ex.Message;
+            }
 
             Microsoft.Data.Sqlite.SqliteCommand com1 = new SqliteCommand(queryString.Where(x => x.Key == "Insert").FirstOrDefault().Value, con);
             com1.ExecuteNonQuery();
@@ -40,5 +47,6 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
             con.Close();
             return result;
         }
+
     }
 }

@@ -26,7 +26,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             bool result = availabilityUserName.WhetherUserLoginIsAvailable(user.user_login);
             if (result)
             {
-                return usersRepository.AddUser(user);
+                if (!String.IsNullOrEmpty(user.user_email))
+                    return usersRepository.AddUser(user);
+                else
+                    return false;
             }
             return result;
         }

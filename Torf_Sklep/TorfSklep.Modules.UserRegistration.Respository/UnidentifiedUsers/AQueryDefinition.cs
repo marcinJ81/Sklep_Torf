@@ -7,20 +7,33 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
     public abstract class AQueryDefinition
     {
-        private IQuerySqlite testDataBase;
+        protected IQuerySqlite testDataBase;
         public string createTable { get; }
         public string selectUserTable { get; }
+        public string dropTable { get; }
 
-        private AQueryDefinition()
+        private AQueryDefinition(DataBaseType choise)
         {
-            this.testDataBase = new TestDataBase_InMemmory();
+            if ((int)choise == 0)
+            {
+                this.testDataBase = new TestDataBase_InMemmory();
+            }
+            if ((int)choise == 1)
+            {
+                this.testDataBase = new TestDataBase_InFile();
+            }
         }
-        public AQueryDefinition(TableName tableName):
-            this()
+        public AQueryDefinition(TableName tableName, DataBaseType choise) :
+            this(choise)
         {
             if ((int)tableName == 1)
             {
-                    this.createTable = @"CREATE TABLE user_register
+                if ((int)choise == 1)
+                    dropTable = @"DROP TABLE IF EXISTS; ";
+                else
+                    dropTable = string.Empty;
+
+                this.createTable =dropTable + @"CREATE TABLE IF NOT EXISTS user_register
                 (
                     user_id INTEGER IDENTITY PRIMARY KEY,
                     user_name VARCHAR NOT NULL,
@@ -29,12 +42,13 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                     user_email VARCHAR NOT NULL,
                     user_account_active INT NOT NULL,
                     user_ban BIT NOT NULL,
-                    external_id VARCHAR UNIQUE
+                    external_id VARCHAR NOT NULL
                 );";
                 this.selectUserTable = @"select user_id, user_name,user_sname," +
                                        "user_login,user_email, user_account_active " +
                                        " user_ban, external_id from user_register";
             }
+            
 
         }
         private string getInsertQuery(User user)
@@ -45,7 +59,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                 + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
             return insertQuery;
         }
-        public bool AddUser_InMemmoryBase(User user)
+        public bool AddUser_ToBase(User user)
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
             queryDictionary.Add("Create", createTable);

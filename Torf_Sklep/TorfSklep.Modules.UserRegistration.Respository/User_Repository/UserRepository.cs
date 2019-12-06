@@ -8,15 +8,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
     public class UsersRepository : AQueryDefinition, IUsersRepository
     {
-        private IQuerySqlite testDataBase;
-        public UsersRepository(TableName tableName)
-        :base(tableName)
-        {
-            this.testDataBase = new TestDataBase_InMemmory();
-        }
+        public UsersRepository(TableName tableName, DataBaseType choice)
+        :base(tableName,choice){ }
         public bool AddUser(User user)
         {
-            if (AddUser_InMemmoryBase(user))
+            if (AddUser_ToBase(user))
                 return true;
             return false;
         }
