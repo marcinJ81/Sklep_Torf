@@ -10,18 +10,15 @@ namespace Tests
     public class UserRegisterTests
     {
         private IUserRegistration userRegistration;
-        private Fake_UserLoginAvability fake_UserLoginAvability;
-        private UserNameAvability userName;
+        private ICheckingAvailabilityUserLogin usernameAvability;
         private IUsersRepository userRepository;
         [SetUp]
         public void Setup()
         {
-            this.fake_UserLoginAvability = new Fake_UserLoginAvability();
-
             this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
                 TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
-            this.userName = new UserNameAvability(userRepository);
-            this.userRegistration = new UserRegistration(userRepository, fake_UserLoginAvability);
+            usernameAvability =  new Fake_UserLoginAvability();
+            this.userRegistration = new UserRegistration(userRepository, usernameAvability);
            
         }
 
@@ -32,7 +29,7 @@ namespace Tests
                 string userLogin = "wolnylogin";
 
             //when
-                bool result = fake_UserLoginAvability.WhetherLoginNameIsAvailable(userLogin);
+                bool result = usernameAvability.WhetherLoginNameIsAvailable(userLogin);
             //then
                 Assert.IsTrue(result);
         }
