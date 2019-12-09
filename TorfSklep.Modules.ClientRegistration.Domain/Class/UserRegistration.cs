@@ -23,7 +23,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
         #region Methods
         public bool RegisterUser(User user)
         {
-            bool result = availabilityUserName.WhetherUserLoginIsAvailable(user.user_login);
+            bool result = availabilityUserName.WhetherLoginNameIsAvailable(user.user_login);
             if (result)
             {
                 if (!String.IsNullOrEmpty(user.user_email))

@@ -46,5 +46,10 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         {
             throw new NotImplementedException();
         }
+
+        public bool IsLoginNameFree(string loginName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

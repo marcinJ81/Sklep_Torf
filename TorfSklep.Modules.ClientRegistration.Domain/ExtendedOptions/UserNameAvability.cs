@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.UserRegistration.Respository;
 
 namespace TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions
 {
     public class UserNameAvability : ICheckingAvailabilityUserLogin
     {
-        public bool WhetherUserLoginIsAvailable(string userLogin)
+        private readonly IUsersRepository userRepo;
+        public UserNameAvability(IUsersRepository userRepo)
         {
-            throw new NotImplementedException();
+            this.userRepo = userRepo;
+        }
+        public bool WhetherLoginNameIsAvailable(string userLogin)
+        {
+            if (userRepo.IsLoginNameFree(userLogin))
+                return true;
+            return false;
         }
     }
 }

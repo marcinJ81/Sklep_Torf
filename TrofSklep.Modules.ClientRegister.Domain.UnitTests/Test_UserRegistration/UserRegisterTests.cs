@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using TorfSklep.Modules.UserRegistration.Domain;
+using TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Domain.UnitTests;
 using TorfSklep.Modules.UserRegistration.Respository;
@@ -10,6 +11,7 @@ namespace Tests
     {
         private IUserRegistration userRegistration;
         private Fake_UserLoginAvability fake_UserLoginAvability;
+        private UserNameAvability userName;
         private IUsersRepository userRepository;
         [SetUp]
         public void Setup()
@@ -18,14 +20,15 @@ namespace Tests
             this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
                 TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
             this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
+            this.userName = new UserNameAvability(userRepository);
         }
 
         [Test]
         public void ShouldRegisterUser_WhenLoginIsAvailable()
         {
             //given
-                string userLogin = "wolnylogin";
-                User users = new User() { user_id = 1, user_name = "test",user_login = userLogin,user_email = "test@test"};
+                string userLogin = "wolny_login";
+                User users = new User() { user_id = 5, user_name = "test",user_login = userLogin,user_email = "test@test"};
             //when
                 bool result = this.userRegistration.RegisterUser(users);
             //then
