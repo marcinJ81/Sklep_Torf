@@ -116,16 +116,23 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Select", selectUserTable);
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
 
-            User userdb = new User();
-            string[] source = result[1].Split(new char[] { ',' });
-            userdb.user_id = int.Parse(source[0]);
-            userdb.user_name = source[1];
-            userdb.user_sname = source[2];
-            userdb.user_login = source[3];
-            userdb.user_email = source[4];
-            userdb.user_account_active = int.Parse(source[5]);
-
-            if ((userdb.user_login == loginName))
+            int amountRows = result.Count;
+            string[] source;
+            List<User> listUser = new List<User>();
+            for (int i = 1; i < amountRows; i++)
+            {
+                source = result[i].Split(new char[] { ',' });
+                listUser.Add(new User
+                {
+                    user_id = int.Parse(source[0]),
+                    user_name = source[1],
+                    user_sname = source[2],
+                    user_login = source[3],
+                    user_email = source[4],
+                    user_account_active = int.Parse(source[5])
+                });
+            }
+          if (listUser.Any(x => x.user_login == loginName))
                 return false;
             return true;
         }
