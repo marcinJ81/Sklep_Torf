@@ -18,6 +18,7 @@ namespace Tests
             this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
                 TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
             usernameAvability =  new Fake_UserLoginAvability();
+            //usernameAvability = new UserNameAvability(userRepository);
             this.userRegistration = new UserRegistration(userRepository, usernameAvability);
            
         }
@@ -37,15 +38,11 @@ namespace Tests
         public void ShouldNotRegisterUser_WhenLoginIsNotAvailable()
         {
             //given
-                string loginName = "zajetyLogin";
-
-                User users = new User() { user_id = 1, user_name = "test", user_login = loginName, user_email = "test@test" };
-                bool result = this.userRegistration.RegisterUser(users);
-                Assert.IsFalse(result);
+                string userLogin = "zajetyLogin";
             //when
-                result = userRegistration.RegisterUser(users);
+                bool result = usernameAvability.WhetherLoginNameIsAvailable(userLogin);
             //then
-                Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
         [Test]
         public void ShouldRegisterUser_whenLoginIsAvailableAndAllNecessaryUserDataIsAdd()
