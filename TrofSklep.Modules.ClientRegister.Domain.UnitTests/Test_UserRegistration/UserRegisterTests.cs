@@ -17,17 +17,19 @@ namespace Tests
         public void Setup()
         {
             this.fake_UserLoginAvability = new Fake_UserLoginAvability();
+
             this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
                 TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
-            this.userRegistration = new UserRegistration(userRepository,fake_UserLoginAvability);
             this.userName = new UserNameAvability(userRepository);
+            this.userRegistration = new UserRegistration(userRepository,userName);
+           
         }
 
         [Test]
         public void ShouldRegisterUser_WhenLoginIsAvailable()
         {
             //given
-                string userLogin = "wolny_login";
+                string userLogin = "wolnyogin";
                 User users = new User() { user_id = 5, user_name = "test",user_login = userLogin,user_email = "test@test"};
             //when
                 bool result = this.userRegistration.RegisterUser(users);
@@ -39,6 +41,7 @@ namespace Tests
         {
             //given
                 string loginName = "zajetyLogin";
+
                 User users = new User() { user_id = 1, user_name = "test", user_login = loginName, user_email = "test@test" };
                 bool result = this.userRegistration.RegisterUser(users);
                 Assert.IsFalse(result);

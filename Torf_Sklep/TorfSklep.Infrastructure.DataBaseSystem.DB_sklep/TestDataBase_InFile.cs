@@ -39,8 +39,9 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
 
             List<string> result = new List<string>();
             var rdr = com3.ExecuteReader();
+            result = GetAllRows(rdr);
             con.Close();
-            return GetAllRows(rdr);
+            return result;
         }
         private List<string> GetAllRows(SqliteDataReader rdr)
         {
