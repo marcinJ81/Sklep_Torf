@@ -8,12 +8,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
     public class UsersRepository : AQueryDefinition, IUsersRepository
     {
-        private DataBaseType dbType;
         public UsersRepository(TableName tableName, DataBaseType choice)
         :base(tableName,choice)
-        {
-            this.dbType = choice;
-        }
+        {}
         public bool AddUser(User user)
         {
             if (AddUser_ToBase(user))
