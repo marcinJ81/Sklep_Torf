@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
@@ -11,6 +12,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
         public string createTable { get; }
         public string selectUserTable { get; }
         public string dropTable { get; }
+        private DataBaseType dbType;
 
         private AQueryDefinition(DataBaseType choise)
         {
@@ -22,6 +24,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             {
                 this.testDataBase = new TestDataBase_InFile();
             }
+            this.dbType = choise;
         }
         public AQueryDefinition(TableName tableName, DataBaseType choise) :
             this(choise)
@@ -29,7 +32,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             if ((int)tableName == 1)
             {
                 if ((int)choise == 1)
-                    dropTable = @"DROP TABLE IF EXISTS; ";
+                    dropTable = @"DROP TABLE IF EXISTS user_register; ";
                 else
                     dropTable = string.Empty;
 
@@ -67,19 +70,73 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Select", selectUserTable);
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
 
-            User userdb = new User();
-            string[] source = result[1].Split(new char[] { ',' });
-            userdb.user_id = int.Parse(source[0]);
-            userdb.user_name = source[1];
-            userdb.user_sname = source[2];
-            userdb.user_login = source[3];
-            userdb.user_email = source[4];
-            userdb.user_account_active = int.Parse(source[5]);
+            
+            string[] source;
+            if ((int)dbType == 0)
+            {
+                User userdb = new User();
+                source = result[1].Split(new char[] { ',' });
+                userdb.user_id = int.Parse(source[0]);
+                userdb.user_name = source[1];
+                userdb.user_sname = source[2];
+                userdb.user_login = source[3];
+                userdb.user_email = source[4];
+                userdb.user_account_active = int.Parse(source[5]);
+                if ((userdb.user_name == user.user_name) && (userdb.user_email == user.user_email))
+                    return true;
+                return false;
+            }
+            else
+            {
+                int amountRows = result.Count;
+                List<User> listUser = new List<User>();
+                for (int i = 1; i < amountRows; i++)
+                {
+                    source = result[i].Split(new char[] { ',' });
+                    listUser.Add(new User
+                    {
+                        user_id = int.Parse(source[0]),
+                        user_name = source[1],
+                        user_sname = source[2],
+                        user_login = source[3],
+                        user_email = source[4],
+                        user_account_active = int.Parse(source[5])
+                }); 
+                }
+                if ((listUser.Any(x => x.user_name == user.user_name)) && (listUser.Any(x => x.user_login == user.user_login)))
+                    return true;
+                return false;
+            }
 
-            if ((userdb.user_name == user.user_name) && (userdb.user_email == user.user_email))
-                return true;
-            return false;
+           
         }
+        public bool CheckLoginAvaible_ToBase(string loginName)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Select", selectUserTable);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+
+            int amountRows = result.Count;
+            string[] source;
+            List<User> listUser = new List<User>();
+            for (int i = 1; i < amountRows; i++)
+            {
+                source = result[i].Split(new char[] { ',' });
+                listUser.Add(new User
+                {
+                    user_id = int.Parse(source[0]),
+                    user_name = source[1],
+                    user_sname = source[2],
+                    user_login = source[3],
+                    user_email = source[4],
+                    user_account_active = int.Parse(source[5])
+                });
+            }
+          if (listUser.Any(x => x.user_login == loginName))
+                return false;
+            return true;
+        }
+
 
     }
 }

@@ -13,6 +13,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         bool IsAccountActive(int id_user);
         bool IsAccountHaveBan(int id_user);
         bool IsExternalIDSet(int id_user);
-
+        bool IsLoginNameFree(string loginName);
     }
 }

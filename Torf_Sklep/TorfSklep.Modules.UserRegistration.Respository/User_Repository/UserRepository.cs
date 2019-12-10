@@ -9,7 +9,8 @@ namespace TorfSklep.Modules.UserRegistration.Respository
     public class UsersRepository : AQueryDefinition, IUsersRepository
     {
         public UsersRepository(TableName tableName, DataBaseType choice)
-        :base(tableName,choice){ }
+        :base(tableName,choice)
+        {}
         public bool AddUser(User user)
         {
             if (AddUser_ToBase(user))
@@ -45,6 +46,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public User SearchUser(int user_id)
         {
             throw new NotImplementedException();
+        }
+
+        public bool IsLoginNameFree(string loginName)
+        {
+           return CheckLoginAvaible_ToBase(loginName);
         }
     }
 }

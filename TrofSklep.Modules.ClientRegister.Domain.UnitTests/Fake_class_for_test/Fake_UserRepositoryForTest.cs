@@ -86,5 +86,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
                 return false;
             return true;
         }
+
+        public bool IsLoginNameFree(string loginName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

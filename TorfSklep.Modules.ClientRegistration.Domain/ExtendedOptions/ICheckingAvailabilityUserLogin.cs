@@ -6,6 +6,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
 {
     public interface ICheckingAvailabilityUserLogin
     {
-        bool WhetherUserLoginIsAvailable(string userLogin);
+        bool WhetherLoginNameIsAvailable(string userLogin);
     }
 }

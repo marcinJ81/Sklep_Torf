@@ -6,7 +6,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Tests
 {
     public class Fake_UserLoginAvability : ICheckingAvailabilityUserLogin
     {
-        public bool WhetherUserLoginIsAvailable(string userName)
+        public bool WhetherLoginNameIsAvailable(string userName)
         {
             if (userName == "wolnylogin")
                 return true;
