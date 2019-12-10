@@ -82,14 +82,59 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                 userdb.user_login = source[3];
                 userdb.user_email = source[4];
                 userdb.user_account_active = int.Parse(source[5]);
+                userdb.external_id = source[6];
                 if ((userdb.user_name == user.user_name) && (userdb.user_email == user.user_email))
                     return true;
                 return false;
             }
             else
             {
-                int amountRows = result.Count;
-                List<User> listUser = new List<User>();
+                List<User> listUser = GetAllUsers();
+                if ((listUser.Any(x => x.user_name == user.user_name)) && (listUser.Any(x => x.user_login == user.user_login)))
+                    return true;
+                return false;
+            } 
+        }
+        public bool AccountHaveBan(int id_user)
+        {
+            List<User> result = GetAllUsers();
+            if (result.Any(x => x.user_ban == true))
+                return false;
+            return true;
+        }
+        public bool AccountActive(int id_user)
+        {
+            List<User> result = GetAllUsers();
+            if (result.Any(x => x.user_account_active == 1))
+                return true;
+            return false;
+        }
+        public bool ExternalIdSet(int id_ser)
+        {
+            List<User> result = GetAllUsers();
+            if (result.Any(x => String.IsNullOrEmpty(x.external_id)))
+                return true;
+            return false;
+        }
+        public bool CheckLoginAvaible_ToBase(string loginName)
+        {
+          List<User> result = GetAllUsers();
+          if (result.Any(x => x.user_login == loginName))
+                return false;
+            return true;
+        }
+
+        private List<User> GetAllUsers()
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Select", selectUserTable);
+            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+
+            int amountRows = result.Count;
+            string[] source;
+            List<User> listUser = new List<User>();
+            if (amountRows > 1)
+            {
                 for (int i = 1; i < amountRows; i++)
                 {
                     source = result[i].Split(new char[] { ',' });
@@ -100,41 +145,24 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                         user_sname = source[2],
                         user_login = source[3],
                         user_email = source[4],
-                        user_account_active = int.Parse(source[5])
-                }); 
+                        user_account_active = int.Parse(source[5]),
+                        external_id = source[6]
+                    });
                 }
-                if ((listUser.Any(x => x.user_name == user.user_name)) && (listUser.Any(x => x.user_login == user.user_login)))
-                    return true;
-                return false;
+                return listUser;
             }
-
-           
-        }
-        public bool CheckLoginAvaible_ToBase(string loginName)
-        {
-            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
-            queryDictionary.Add("Select", selectUserTable);
-            var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
-
-            int amountRows = result.Count;
-            string[] source;
-            List<User> listUser = new List<User>();
-            for (int i = 1; i < amountRows; i++)
+            listUser.Add(new User
             {
-                source = result[i].Split(new char[] { ',' });
-                listUser.Add(new User
-                {
-                    user_id = int.Parse(source[0]),
-                    user_name = source[1],
-                    user_sname = source[2],
-                    user_login = source[3],
-                    user_email = source[4],
-                    user_account_active = int.Parse(source[5])
-                });
-            }
-          if (listUser.Any(x => x.user_login == loginName))
-                return false;
-            return true;
+                user_id = -1,
+                user_name = "brak",
+                user_sname = "brak",
+                user_account_active = 0,
+                user_ban = true,
+                user_email = "brak",
+                user_login = "brak",
+                external_id = "brak"
+            });
+            return listUser;
         }
 
 

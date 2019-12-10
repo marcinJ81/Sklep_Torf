@@ -25,12 +25,16 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
         public bool IsAccountActive(int id_user)
         {
-            throw new NotImplementedException();
+            if (AccountActive(id_user))
+                return true;
+            return false;
         }
 
         public bool IsAccountHaveBan(int id_user)
         {
-            throw new NotImplementedException();
+            if (AccountActive(id_user))
+                return true;
+            return false;
         }
 
         public bool IsExternalIDSet(int id_user)
