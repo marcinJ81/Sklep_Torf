@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.ExternalSystem.Repository;
+using TorfSklep.Modules.UserRegistration.Domain.Class;
 using TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions;
+using TorfSklep.Modules.UserRegistration.Domain.Interfaces;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Respository;
 
@@ -10,16 +13,16 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
 {
    public class SetExternalID_Test
     {
-        private IUserRegistration userRegistration;
-        private Fake_UserLoginAvability fake_UserLoginAvability;
+        private IExternalSytemComunication externalSystem;
         private IUsersRepository userRepository;
+        private IExternalIdFunctions externalId;
 
         [SetUp]
         public void Setup()
         {
-            this.fake_UserLoginAvability = new Fake_UserLoginAvability();
+            this.externalId = new ExternalID();
             this.userRepository = new Fake_UserRepositoryForTest();
-            this.userRegistration = new UserRegistration(userRepository, fake_UserLoginAvability);
+            this.externalSystem = new ExternalSytemComunication(externalId,userRepository);
         }
 
         [Test]
@@ -28,7 +31,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int id_user = 0;
             //when
-            bool result = userRegistration.AssignAnExternalIdentifier(id_user);
+            bool result = externalSystem.AssignAnExternalIdentifier(id_user);
             //then
             Assert.IsTrue(result);
         }
@@ -38,7 +41,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             //given
             int id_user = 1;
             //when
-            bool result = userRegistration.AssignAnExternalIdentifier(id_user);
+            bool result = externalSystem.AssignAnExternalIdentifier(id_user);
             //then
             Assert.IsFalse(result);
         }

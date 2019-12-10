@@ -34,12 +34,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             return result;
         }
        
-        public bool AssignAnExternalIdentifier(int id_user)
-        {
-            if (usersRepository.IsExternalIDSet(id_user) == false)
-                return true;
-            return false;
-        }
+        
         #endregion
     }
 }

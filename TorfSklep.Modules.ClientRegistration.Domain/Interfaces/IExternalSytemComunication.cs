@@ -7,5 +7,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Interfaces
     public interface IExternalSytemComunication
     {
         bool SendOrderToExternalSystem(int user_id);
+        bool AssignAnExternalIdentifier(int id_user);
     }
 }
