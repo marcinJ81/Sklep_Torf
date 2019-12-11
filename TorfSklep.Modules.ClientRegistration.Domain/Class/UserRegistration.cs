@@ -9,8 +9,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         private readonly ICheckingAvailabilityUserLogin availabilityUserName;
         private readonly IUsersRepository usersRepository;
-        private readonly IVerificationAccount requestVerificationAccount;
-        private readonly ISendEmail mailSystem;
 
         public UserRegistration(IUsersRepository usersRepository, 
                                 ICheckingAvailabilityUserLogin availabilityUserName)
@@ -34,12 +32,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             return result;
         }
        
-        public bool AssignAnExternalIdentifier(int id_user)
-        {
-            if (usersRepository.IsExternalIDSet(id_user) == false)
-                return true;
-            return false;
-        }
+        
         #endregion
     }
 }
