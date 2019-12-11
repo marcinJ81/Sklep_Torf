@@ -123,7 +123,19 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                 return false;
             return true;
         }
-
+        public bool UserRegister(string name, string sname, string email)
+        {
+            List<User> result = GetAllUsers();
+            if (result.Any(x => x.user_name == name && x.user_sname == sname && x.user_email == email))
+                return true;
+            return false;
+        }
+        public User SearchUser_paramId(int id_user)
+        {
+            List<User> result = GetAllUsers();
+            var source = result.Where(x => x.user_id == id_user).First();
+            return source;
+        }
         private List<User> GetAllUsers()
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();

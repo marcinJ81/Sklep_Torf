@@ -39,17 +39,21 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
         public bool IsExternalIDSet(int id_user)
         {
-            throw new NotImplementedException();
+            if (ExternalIdSet(id_user))
+                return true;
+            return false;
         }
 
         public bool IsThereAUserRegister(string name, string sname,string email)
         {
-            throw new NotImplementedException();
+            if(UserRegister(name,sname,email))
+                return true;
+            return false;
         }
 
         public User SearchUser(int user_id)
         {
-            throw new NotImplementedException();
+            return SearchUser_paramId(user_id);
         }
 
         public bool IsLoginNameFree(string loginName)
