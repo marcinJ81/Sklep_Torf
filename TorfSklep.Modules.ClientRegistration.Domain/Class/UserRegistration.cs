@@ -9,8 +9,6 @@ namespace TorfSklep.Modules.UserRegistration.Domain
     {
         private readonly ICheckingAvailabilityUserLogin availabilityUserName;
         private readonly IUsersRepository usersRepository;
-        private readonly IVerificationAccount requestVerificationAccount;
-        private readonly ISendEmail mailSystem;
 
         public UserRegistration(IUsersRepository usersRepository, 
                                 ICheckingAvailabilityUserLogin availabilityUserName)
