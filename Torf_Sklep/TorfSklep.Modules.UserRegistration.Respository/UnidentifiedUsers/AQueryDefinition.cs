@@ -62,6 +62,19 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                 + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
             return insertQuery;
         }
+        public void InsertUserToFile(List<User> listOfUsers)
+        {
+            Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+           
+            if ((int)dbType == 1)
+            {
+                foreach (var i in listOfUsers)
+                {
+                    queryDictionary.Add("Insert", getInsertQuery(i));
+                    var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
+                }
+            }
+        }
         public bool AddUser_ToBase(User user)
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
