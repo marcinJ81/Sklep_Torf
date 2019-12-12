@@ -32,15 +32,28 @@ namespace TorfSklep.Infrastructure.DataBaseSystem.DB_sklep
             if (queryString.Any(x => x.Key == "Insert"))
             {
                 Microsoft.Data.Sqlite.SqliteCommand com1 = new SqliteCommand(queryString.Where(x => x.Key == "Insert").FirstOrDefault().Value, con);
-                com1.ExecuteNonQuery();
+                try
+                {
+                    com1.ExecuteNonQuery();
+                }
+                catch (SqliteException ex)
+                {
+                    string er = ex.Message;
+                }
             }
-            Microsoft.Data.Sqlite.SqliteCommand com3 = new SqliteCommand(queryString.Where(x => x.Key == "Select").FirstOrDefault().Value, con);
-            //com3.ExecuteNonQuery();
+            
+            if (queryString.Any(x => x.Key == "Select"))
+            {
+                Microsoft.Data.Sqlite.SqliteCommand com3 = new SqliteCommand(queryString.Where(x => x.Key == "Select").FirstOrDefault().Value, con);
+                com3.ExecuteNonQuery();
+                List<string> result2 = new List<string>();
+                var rdr = com3.ExecuteReader();
+                result2 = GetAllRows(rdr);
+                con.Close();
+                return result2;
+            }
 
             List<string> result = new List<string>();
-            var rdr = com3.ExecuteReader();
-            result = GetAllRows(rdr);
-            con.Close();
             return result;
         }
         private List<string> GetAllRows(SqliteDataReader rdr)

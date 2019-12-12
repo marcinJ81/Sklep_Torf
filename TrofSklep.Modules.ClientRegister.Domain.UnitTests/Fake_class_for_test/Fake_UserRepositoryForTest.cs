@@ -35,6 +35,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
             });
             return listOfUsers;
         }
+        
         public bool AddUser(User user)
         {
             if ((user.user_id == 1) && (user.user_name == "julian") && (user.user_login == "wolnylogin"))
