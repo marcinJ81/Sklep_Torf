@@ -19,9 +19,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests.Test_UserRegistrat
         public void SetUp()
         {
             this.fake_externalID = new Fake_ExternalComunication();
-            this.userRepo = new Fake_UserRepositoryForTest();
-           // this.userRepo = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
-            //    TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
+           // this.userRepo = new Fake_UserRepositoryForTest();
+           this.userRepo = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
+              TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
             this.externalSytemComunication = new ExternalSytemComunication(fake_externalID,userRepo);
         }
         [Test]

@@ -6,6 +6,7 @@ using TorfSklep.Modules.UserRegistration.Domain.ExtendedOptions;
 using TorfSklep.Modules.UserRegistration.Domain.Tests;
 using TorfSklep.Modules.UserRegistration.Domain.UnitTests;
 using TorfSklep.Modules.UserRegistration.Respository;
+using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 
 namespace Tests
 {
@@ -18,8 +19,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            this.userRepository = new UsersRepository(TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.TableName.User_table,
-                TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers.DataBaseType.InFile);
+            this.userRepository = new UsersRepository(TableName.User_table,DataBaseType.InFile);
             //usernameAvability =  new Fake_UserLoginAvability();
             usernameAvability = new UserNameAvability(userRepository);
             this.userRegistration = new UserRegistration(userRepository, usernameAvability);
@@ -29,7 +29,7 @@ namespace Tests
         public void ShouldRegisterUser_WhenLoginIsAvailable()
         {
             //given
-                string userLogin = "wolny_login";
+                string userLogin = "wolnylogin";
             //when
                 bool result = usernameAvability.WhetherLoginNameIsAvailable(userLogin);
             //then
@@ -37,25 +37,49 @@ namespace Tests
           
         }
         [Test]
-        public void ShouldNotRegisterUser_WhenLoginIsNotAvailable()
+        [TestCase(DataBaseType.InFile)]
+        [TestCase(DataBaseType.InMemmory)]
+        public void ShouldNotRegisterUser_WhenLoginIsNotAvailable(DataBaseType dbType)
         {
+            if ((int)dbType == 0)
+            {
+                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InMemmory);
+            }
+            if ((int)dbType == 1)
+            {
+                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InFile);
+            }
             //given
-                string userLogin = "imie2nazwisko2";
+            string userLogin = "zajetyLogin";
             //when
                 bool result = usernameAvability.WhetherLoginNameIsAvailable(userLogin);
             //then
             Assert.IsFalse(result);
         }
         [Test]
-        public void ShouldRegisterUser_whenLoginIsAvailableAndAllNecessaryUserDataIsAdd()
+        [TestCase(DataBaseType.InFile)]
+        [TestCase(DataBaseType.InMemmory)]
+        public void ShouldRegisterUser_whenLoginIsAvailableAndAllNecessaryUserDataIsAdd(DataBaseType dbType)
         {
             //given
-                string loginName = "wolny_login";
+            if ((int)dbType == 0)
+            {
+                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InMemmory);
+
+            }
+            if ((int)dbType == 1)
+            {
+                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InFile);
+            }
+            
+
+            string loginName = "wolnylogin";
             //and
+
             bool result = usernameAvability.WhetherLoginNameIsAvailable(loginName);
             Assert.IsTrue(result);
             //when
-            User users = new User() { user_id = 2, user_name = "imie2", user_login = "nazwisko2", user_email = "email2@" };
+            User users = new User() { user_id = 2, user_name = "imie2", user_login = "imie2nazwisko2", user_email = "email2@" };
             var resultdb = userRepository.SearchUser(users.user_id);
             //then
             Assert.AreEqual(users.user_id, resultdb.user_id);
@@ -67,7 +91,7 @@ namespace Tests
         public void ShouldNotRegister_whenLoginIsAvailableAndUserDataIsWrong()
         {
             //given
-                string loginName = "wolnylogin";
+                string loginName = "zajetyLogin";
             User users = new User() { user_login = loginName };
             //when
             bool result = this.userRegistration.RegisterUser(users);

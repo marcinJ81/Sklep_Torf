@@ -24,6 +24,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain.UnitTests
         public void Setup()
         {
             this.userRepository = new Fake_UserRepositoryForTest();
+
             this.fake_verificationAccount = new Fake_RequestVerificationAccount();
             this.fake_sendEmail = new Fake_MailSystem();
             this.sendSecondVerificationEmail = new SecondVerificationMail(fake_verificationAccount,userRepository,fake_sendEmail);
