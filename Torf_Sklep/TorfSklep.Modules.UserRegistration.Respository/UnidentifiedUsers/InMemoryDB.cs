@@ -5,7 +5,7 @@ using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
-    public class InMemmoryDB : IInMemory<User>
+    public class InMemmoryDB : IInFileMemmoryDB<User>
     {
         protected IQuerySqlite testDataBase;
         public string createTable { get; }

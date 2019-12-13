@@ -15,7 +15,7 @@ namespace Tests
         private IUserRegistration userRegistration;
         private ICheckingAvailabilityUserLogin usernameAvability;
         private IUsersRepository userRepository;
-        private IuserRepository_insert insertUser;
+        private IUserRepository_insert insertUser;
         [SetUp]
         public void Setup()
         {

@@ -5,23 +5,38 @@ using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
-   public abstract class ASwitchDB
-    {
-
-    }
-
-
-    public class InfileDB : IInFile_User
+    public abstract class ASwitchDB<T> 
     {
         protected IQuerySqlite testDataBase;
+        public IInFileMemmoryDB<T> fileMemmoryDB { get; }
+        public ASwitchDB(IInFileMemmoryDB<T> fileMemmoryDB, DataBaseType choise)
+        {
+            if ((int)choise == 0)
+            {
+                this.testDataBase = new TestDataBase_InMemmory();
+            }
+            if ((int)choise == 1)
+            {
+                this.testDataBase = new TestDataBase_InFile();
+            }
+            this.fileMemmoryDB = fileMemmoryDB;
+        }
     }
-    public interface IInFile_User
+    public class TestRepo : ASwitchDB<User>
     {
+        public TestRepo(IInFileMemmoryDB<User> fileMemmoryDB, DataBaseType choise)
+            :base(fileMemmoryDB,choise)
+        {
 
+        }
     }
-
-    
-    public interface IInMemory<T>
+    public interface IInFileDB<T>
+    {
+        bool create_table();
+        bool drop_table();
+        bool insert_testData();
+    }
+    public interface IInFileMemmoryDB<T>
     {
         List<T> select_AllRows();
         bool insert_OneElement(T sometable);

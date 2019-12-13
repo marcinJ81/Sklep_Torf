@@ -6,7 +6,7 @@ using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 namespace TorfSklep.Modules.UserRegistration.Respository
 {
 
-    public class UsersRepository : AQueryDefinition, IUsersRepository, IuserRepository_insert
+    public class UsersRepository : AQueryDefinition, IUsersRepository, IUserRepository_insert
     {
         public UsersRepository(TableName tableName, DataBaseType choice)
         :base(tableName,choice)

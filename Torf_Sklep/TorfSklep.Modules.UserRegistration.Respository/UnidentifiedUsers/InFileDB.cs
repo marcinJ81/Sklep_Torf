@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
-    public class InfileDB : IInFile<User>
+    public class InfileDB : IInFileMemmoryDB<User>, IInFileDB<User>
     {
         protected IQuerySqlite testDataBase;
 
