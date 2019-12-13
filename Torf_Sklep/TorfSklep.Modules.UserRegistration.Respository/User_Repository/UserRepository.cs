@@ -6,7 +6,7 @@ using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 namespace TorfSklep.Modules.UserRegistration.Respository
 {
 
-    public class UsersRepository : AQueryDefinition, IUsersRepository
+    public class UsersRepository : AQueryDefinition, IUsersRepository, IuserRepository_insert
     {
         public UsersRepository(TableName tableName, DataBaseType choice)
         :base(tableName,choice)
@@ -59,6 +59,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         public bool IsLoginNameFree(string loginName)
         {
            return CheckLoginAvaible_ToBase(loginName);
+        }
+
+        public List<User> insertUsers(List<User> listUsers)
+        {
+            return InsertUserToFile(listUsers);
         }
     }
 }

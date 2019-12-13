@@ -15,4 +15,9 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         bool IsExternalIDSet(int id_user);
         bool IsLoginNameFree(string loginName);
     }
+
+    public interface IuserRepository_insert
+    {
+        List<User> insertUsers(List<User> listUsers);
+    }
 }
