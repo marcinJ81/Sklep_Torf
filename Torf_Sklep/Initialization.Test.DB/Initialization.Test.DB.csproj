@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TorfSklep.Infrastructure.DataBaseSystem.DB_sklep\TorfSklep.Infrastructure.DataBaseSystem.DB_sklep.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.ExternalSystem.Repository\TorfSklep.Modules.ExternalSystem.Repository.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TorfSklep.Infrastructure.DataBaseSystem.DB_sklep\TorfSklep.Infrastructure.DataBaseSystem.DB_sklep.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.ExternalSystem.Repository\TorfSklep.Modules.ExternalSystem.Repository.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.UserRegistration.Respository\TorfSklep.Modules.UserRegistration.Respository.csproj" />
+  </ItemGroup>
+
+</Project>
