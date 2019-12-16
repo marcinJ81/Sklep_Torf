@@ -6,14 +6,13 @@ using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 namespace TorfSklep.Modules.UserRegistration.Respository
 {
 
-    public class UsersRepository : AQueryDefinition, IUsersRepository, IuserRepository_insert
+    public class UsersRepository : AQueryDefinition, IUsersRepository, IUserRepository_insert
     {
-        public UsersRepository(TableName tableName, DataBaseType choice)
-        :base(tableName,choice)
-        {}
+        public UsersRepository(DataBaseType choice)
+        :base(choice){}
         public bool AddUser(User user)
         {
-            if (AddUser_ToBase(user))
+            if (imethodDB.AddUser_ToBase(user))
                 return true;
             return false;
         }
@@ -25,45 +24,45 @@ namespace TorfSklep.Modules.UserRegistration.Respository
 
         public bool IsAccountActive(int id_user)
         {
-            if (AccountActive(id_user))
+            if (imethodDB.AccountActive(id_user))
                 return true;
             return false;
         }
 
         public bool IsAccountHaveBan(int id_user)
         {
-            if (AccountActive(id_user))
+            if (imethodDB.AccountActive(id_user))
                 return true;
             return false;
         }
 
         public bool IsExternalIDSet(int id_user)
         {
-            if (ExternalIdSet(id_user))
+            if (imethodDB.ExternalIdSet(id_user))
                 return true;
             return false;
         }
 
         public bool IsThereAUserRegister(string name, string sname,string email)
         {
-            if(UserRegister(name,sname,email))
+            if(imethodDB.UserRegister(name,sname,email))
                 return true;
             return false;
         }
 
         public User SearchUser(int user_id)
         {
-            return SearchUser_paramId(user_id);
+            return imethodDB.SearchUser_paramId(user_id);
         }
 
         public bool IsLoginNameFree(string loginName)
         {
-           return CheckLoginAvaible_ToBase(loginName);
+           return imethodDB.CheckLoginAvaible_ToBase(loginName);
         }
 
         public List<User> insertUsers(List<User> listUsers)
         {
-            return InsertUserToFile(listUsers);
+            return imethodDB.InsertUserToFile(listUsers);
         }
     }
 }
