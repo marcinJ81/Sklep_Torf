@@ -102,3 +102,62 @@ UserRepository inherits of AQueryDefinition abstract class and interfaces IUserR
         public UsersRepository(TableName tableName, DataBaseType choice)
         :base(tableName,choice){}
 ```
+#### Database Switch part two
+Refactoring switchDB. Older class AQueryDefinition has too many paoints to change. I refactored this class. 
+New class look like this:
+```csharp
+  public abstract class AQueryDefinition
+    {
+        public IMethodDB_File_Memmory imethodDB { get; }
+        public  AQueryDefinition(DataBaseType choise)
+        {
+            if ((int)choise == 0)
+            {
+                this.imethodDB = new DBInMemory();
+            }
+            if ((int)choise == 1)
+            {
+                this.imethodDB = new DBInFile();
+            }  
+        }
+    }
+```
+I have one interface to connect two different abstract class. In this classes i have definitions of interface MethodDB_File_Memmory.
+Interface declaration:
+```csharp
+public interface IMethodDB_File_Memmory
+    {
+        bool AddUser_ToBase(User user);
+        bool AccountHaveBan(int id_user);
+        bool AccountActive(int id_user);
+        bool ExternalIdSet(int id_ser);
+        bool CheckLoginAvaible_ToBase(string loginName);
+        bool UserRegister(string name, string sname, string email);
+        User SearchUser_paramId(int id_user);
+        List<User> InsertUserToFile(List<User> listOfUsers);
+    }
+```
+I also have an intermediate class DBInMemory and DBInFile:
+```csharp
+ public class DBInFile : ADBInFile, IMethodDB_File_Memmory
+    {
+        public DBInFile() : base() { }
+    }
+```
+```csharp
+public class DBInMemory : ADBInMemory, IMethodDB_File_Memmory
+    {
+        public DBInMemory() : base() { }
+    }
+```
+And I have abstract class with  methods definitions
+```csharp
+ public abstract class ADBInMemory
+ {
+ //methods definitions
+ }
+ public abstract class ADBInFile 
+ {
+ //methods definitions
+ }
+```
