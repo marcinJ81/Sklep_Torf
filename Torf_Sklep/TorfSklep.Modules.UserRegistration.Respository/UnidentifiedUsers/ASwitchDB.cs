@@ -5,11 +5,10 @@ using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
-    public abstract class ASwitchDB<T> 
+    public abstract class ASwitchDB 
     {
         protected IQuerySqlite testDataBase;
-        public IInFileMemmoryDB<T> fileMemmoryDB { get; }
-        public ASwitchDB(IInFileMemmoryDB<T> fileMemmoryDB, DataBaseType choise)
+        public ASwitchDB(DataBaseType choise)
         {
             if ((int)choise == 0)
             {
@@ -19,17 +18,31 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             {
                 this.testDataBase = new TestDataBase_InFile();
             }
-            this.fileMemmoryDB = fileMemmoryDB;
+            
         }
     }
-    public class TestRepo : ASwitchDB<User>
+    public class TestRepoInFile : ASwitchDB
     {
-        public TestRepo(IInFileMemmoryDB<User> fileMemmoryDB, DataBaseType choise)
-            :base(fileMemmoryDB,choise)
+        public IInFileDB<User> firstUseFileDB { get; }
+        public IInFileMemmoryDB<User> fileMemmoryDB { get; }
+        public TestRepoInFile(IInFileMemmoryDB<User> MemmoryDB, DataBaseType choise, IInFileDB<User> firstUseDBFile)
+            :base(choise)
+        {
+            this.firstUseFileDB = firstUseDBFile;
+            this.fileMemmoryDB = MemmoryDB;
+        }
+    }
+    public class TestRepoInMemmory : ASwitchDB
+    {
+        public IInFileMemmoryDB<User> fileMemmoryDB { get; }
+        public TestRepoInMemmory(IInFileMemmoryDB<User> fileMemmoryDB, DataBaseType choise)
+            : base(choise)
         {
 
         }
     }
+
+
     public interface IInFileDB<T>
     {
         bool create_table();

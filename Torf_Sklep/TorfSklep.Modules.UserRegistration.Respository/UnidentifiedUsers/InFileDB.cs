@@ -8,6 +8,10 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
     public class InfileDB : IInFileMemmoryDB<User>, IInFileDB<User>
     {
         protected IQuerySqlite testDataBase;
+        public InfileDB(IQuerySqlite dbInFile)
+        {
+            this.testDataBase = dbInFile;
+        }
 
         public bool create_table()
         {

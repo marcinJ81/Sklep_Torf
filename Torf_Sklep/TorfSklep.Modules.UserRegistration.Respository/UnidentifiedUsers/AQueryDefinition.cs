@@ -51,8 +51,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                        "user_login,user_email, user_account_active " +
                                        " user_ban, external_id from user_register";
             }
-            
-
         }
         private string getInsertQuery(User user)
         {
@@ -71,7 +69,6 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
             queryDictionary.Add("Select", selectUserTable);
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
 
-            
             string[] source;
             if ((int)dbType == 0)
             {
