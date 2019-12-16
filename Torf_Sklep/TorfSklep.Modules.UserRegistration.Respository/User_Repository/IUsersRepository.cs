@@ -16,7 +16,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository
         bool IsLoginNameFree(string loginName);
     }
 
-    public interface IuserRepository_insert
+    public interface IUserRepository_insert
     {
         List<User> insertUsers(List<User> listUsers);
     }

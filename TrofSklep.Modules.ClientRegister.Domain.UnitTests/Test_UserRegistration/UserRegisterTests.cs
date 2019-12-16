@@ -15,11 +15,11 @@ namespace Tests
         private IUserRegistration userRegistration;
         private ICheckingAvailabilityUserLogin usernameAvability;
         private IUsersRepository userRepository;
-        private IuserRepository_insert insertUser;
+        private IUserRepository_insert insertUser;
         [SetUp]
         public void Setup()
         {
-            this.userRepository = new UsersRepository(TableName.User_table,DataBaseType.InFile);
+            this.userRepository = new UsersRepository(DataBaseType.InFile);
             //usernameAvability =  new Fake_UserLoginAvability();
             usernameAvability = new UserNameAvability(userRepository);
             this.userRegistration = new UserRegistration(userRepository, usernameAvability);
@@ -43,11 +43,11 @@ namespace Tests
         {
             if ((int)dbType == 0)
             {
-                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InMemmory);
+                this.userRepository = new UsersRepository( DataBaseType.InMemmory);
             }
             if ((int)dbType == 1)
             {
-                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InFile);
+                this.userRepository = new UsersRepository( DataBaseType.InFile);
             }
             //given
             string userLogin = "zajetyLogin";
@@ -64,12 +64,12 @@ namespace Tests
             //given
             if ((int)dbType == 0)
             {
-                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InMemmory);
+                this.userRepository = new UsersRepository(DataBaseType.InMemmory);
 
             }
             if ((int)dbType == 1)
             {
-                this.userRepository = new UsersRepository(TableName.User_table, DataBaseType.InFile);
+                this.userRepository = new UsersRepository(DataBaseType.InFile);
             }
             
 

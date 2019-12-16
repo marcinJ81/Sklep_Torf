@@ -6,7 +6,11 @@ using TorfSklep.Infrastructure.DataBaseSystem.DB_sklep;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
-    abstract class ADBInFile
+    public class DBInFile : ADBInFile, IMethodDB_File_Memmory
+    {
+        public DBInFile() : base() { }
+    }
+    public abstract class ADBInFile
     {
        protected IQuerySqlite testDataBase;
         public string createTable { get; }
