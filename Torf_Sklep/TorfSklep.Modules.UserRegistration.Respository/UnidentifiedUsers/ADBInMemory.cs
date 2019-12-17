@@ -8,18 +8,96 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
 {
     public interface IMethodDB_File_Memmory
     {
-        bool AddUser_ToBase(User user);
+        IUserAccountAttributes iaccountAttributes { get; }
+        ICheckAndAddUser icheckandadd { get; }
+        IExternalId iexternalid { get; }
+        ISearchUser isearch { get; }
+    }
+    public interface IUserAccountAttributes
+    {
         bool AccountHaveBan(int id_user);
         bool AccountActive(int id_user);
-        bool ExternalIdSet(int id_ser);
-        bool CheckLoginAvaible_ToBase(string loginName);
         bool UserRegister(string name, string sname, string email);
+    }
+
+    public interface ICheckAndAddUser
+    {
+        bool CheckLoginAvaible_ToBase(string loginName);
+        bool AddUser_ToBase(User user);
+    }
+    public interface IExternalId
+    {
+        bool ExternalIdSet(int id_ser);
+    }
+    public interface ISearchUser
+    {
         User SearchUser_paramId(int id_user);
         List<User> InsertUserToFile(List<User> listOfUsers);
     }
+
     public class DBInMemory : ADBInMemory, IMethodDB_File_Memmory
     {
-        public DBInMemory() : base() { }
+        public DBInMemory()
+            : base()
+        {
+            this.iaccountAttributes = ;
+            this.icheckandadd = ;
+            this.iexternalid = ;
+            this.isearch = ;
+        }
+        public IUserAccountAttributes iaccountAttributes { get; }
+        public ICheckAndAddUser icheckandadd { get; }
+        public IExternalId iexternalid { get; }
+        public ISearchUser isearch { get; }
+    }
+    public class UserAccountAttributes : IUserAccountAttributes
+    {
+        public bool AccountActive(int id_user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AccountHaveBan(int id_user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UserRegister(string name, string sname, string email)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class CheckAndAddUser : ICheckAndAddUser
+    {
+        public bool AddUser_ToBase(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckLoginAvaible_ToBase(string loginName)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class ExternalId : IExternalId
+    {
+        public bool ExternalIdSet(int id_ser)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class SearchUser : ISearchUser
+    {
+        public List<User> InsertUserToFile(List<User> listOfUsers)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User SearchUser_paramId(int id_user)
+        {
+            throw new NotImplementedException();
+        }
     }
     public abstract class ADBInMemory
     {
@@ -43,7 +121,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                    "user_login,user_email, user_account_active " +
                                    " user_ban, external_id from user_register";
         }
-        private string getInsertQuery(User user)
+        protected string getInsertQuery(User user)
         {
             string insertQuery = @"insert into user_register values"
                                 + "(" + user.user_id.ToString() + ",'" + user.user_name + "','" + user.user_sname + "','"

@@ -11,11 +11,11 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
         public IMethodDB_File_Memmory imethodDB { get; }
         public  AQueryDefinition(DataBaseType choise)
         {
-            if ((int)choise == 0)
+            if (DataBaseType.InMemmory == choise)
             {
                 this.imethodDB = new DBInMemory();
             }
-            if ((int)choise == 1)
+            if (DataBaseType.InFile == choise)
             {
                 this.imethodDB = new DBInFile();
             }  
