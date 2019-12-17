@@ -36,6 +36,19 @@ namespace TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers
                                 + "," + user.user_ban + "," + "'" + user.external_id + "'" + ")";
             return insertQuery;
         }
+        protected string getInsertMany(List<User> listUser)
+        {
+            if (!listUser.Any())
+            {
+                return String.Empty;
+            }
+            string result = String.Empty;
+            foreach (var i in listUser)
+            {
+                result += getInsertQuery(i) + " ; ";
+            }
+            return result;
+        }
 
         
         

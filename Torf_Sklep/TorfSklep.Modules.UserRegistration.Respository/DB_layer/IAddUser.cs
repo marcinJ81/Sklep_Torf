@@ -13,16 +13,22 @@ namespace TorfSklep.Modules.UserRegistration.Respository.DB_layer
 
     public class AdditionUser : ADBInMemory, IAddUser
     {
+        private readonly ISearchUser searchUser;
+        public AdditionUser(ISearchUser searchUser)
+        {
+            this.searchUser = searchUser;
+        }
         public List<User> InsertOneOrMoreUsers(List<User> listOfUsers)
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
 
             foreach (var i in listOfUsers)
             {
+                queryDictionary.Add("Create", createTable);
                 queryDictionary.Add("Insert", getInsertQuery(i));
                 var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
             }
-            return GetAllUsers();
+            return searchUser.GetAllUsers();
         }
         public bool AddUser_ToBase(User user)
         {

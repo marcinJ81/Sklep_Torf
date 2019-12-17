@@ -12,9 +12,14 @@ namespace TorfSklep.Modules.UserRegistration.Respository.DB_layer
 
     public class ExternalId : IExternalId
     {
+        private readonly ISearchUser isearchUser;
+        public ExternalId(ISearchUser searchUser)
+        {
+            this.isearchUser = searchUser;
+        }
         public bool ExternalIdSet(int id_ser)
         {
-            List<User> result = GetAllUsers();
+            List<User> result = isearchUser.GetAllUsers();
             if (result.Any(x => String.IsNullOrEmpty(x.external_id)))
                 return true;
             return false;

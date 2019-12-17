@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Modules.UserRegistration.Respository.UnidentifiedUsers;
 
@@ -14,16 +15,18 @@ namespace TorfSklep.Modules.UserRegistration.Respository.DB_layer
     {
         public SearchUser() 
             : base() { }
-        
-
         public User SearchUser_paramId(int id_user)
         {
-            throw new NotImplementedException();
+            List<User> result = GetAllUsers();
+            var source = result.Where(x => x.user_id == id_user).First();
+            return source;
         }
 
         public List<User> GetAllUsers()
         {
             Dictionary<string, string> queryDictionary = new Dictionary<string, string>();
+            queryDictionary.Add("Create", createTable);
+           // queryDictionary.Add("Insert", selectUserTable);
             queryDictionary.Add("Select", selectUserTable);
             var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
 
