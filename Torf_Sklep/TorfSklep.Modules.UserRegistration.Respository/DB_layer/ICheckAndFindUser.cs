@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TorfSklep.Modules.UserRegistration.Respository.DB_layer
 {
-    public interface ICheckAndAddUser
+    public interface ICheckAndFindUser
     {
         bool CheckLoginAvaible_ToBase(string loginName);
-        bool AddUser_ToBase(User user);
+       
     }
 
-    public class CheckAndAddUser : ICheckAndAddUser
+    public class CheckAndAddUser : ICheckAndFindUser
     {
-        public bool AddUser_ToBase(User user)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool CheckLoginAvaible_ToBase(string loginName)
         {
-            throw new NotImplementedException();
+            List<User> result = GetAllUsers();
+            if (result.Any(x => x.user_login == loginName))
+                return false;
+            return true;
         }
     }
 }
