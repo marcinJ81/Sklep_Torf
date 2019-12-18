@@ -25,7 +25,7 @@ namespace TorfSklep.Modules.UserRegistration.Respository.DB_layer
             foreach (var i in listOfUsers)
             {
                 queryDictionary.Add("Create", createTable);
-                queryDictionary.Add("Insert", getInsertQuery(i));
+                queryDictionary.Add("Insert", getInsertMany(listOfUsers));
                 var result = testDataBase.db_QueryWithoutParam_sqlConnectionAllInOne(queryDictionary);
             }
             return searchUser.GetAllUsers();
