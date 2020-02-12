@@ -8,16 +8,16 @@ This project is an exercise based on a DNA course.
 ### Author of code:
 - [Marcin Juranek](https://www.linkedin.com/in/marcin-juranek-abb09899/ "Marcin Juranek")
 ## Event Storming Big Picture
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ESBP_main.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ESBP_main.PNG "Big Picture")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.PNG "Big Picture")
 
 ## Event Storming designation of subdomains
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/SB_ekran_glowny.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/SB_ekran_glowny.PNG "Subdomains")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.PNG "Subdomains")
 
 ## Event Storming Procces Level
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/BC_glowny_widok.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/BC_glowny_widok.PNG "Procces Level")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.PNG "Procces Level")
 
 ## Event Storming Design Level
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL_User.jpg)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL_User.jpg "First BC in Design Level")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_User.jpg)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_User.jpg "First BC in Design Level")
 
 #### Database Switch
 In user repository I adding new layer for database switching. This layer I put in abstract class. This class is specific because she has two constructors. First is private, where I choise database type , second is public where i choise table. In my application I have SQLite in memory and in file.
