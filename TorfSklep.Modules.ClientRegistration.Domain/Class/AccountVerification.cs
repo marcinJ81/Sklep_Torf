@@ -21,13 +21,13 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Class
         {
             if (requestVerificationAccount.UserIsInList(id_user) == true)
             {
-                return false;
+                return Result.failure("User not in list accounts for verification ");
             }
             if (this.mailSystem.IsTheVerificationTokenValid(id_user) == false)
             {
-                return false;
+                return Result.failure("User token is not valid");
             }
-            return true;
+            return Result.success();
         }
     }
 }

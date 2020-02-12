@@ -23,20 +23,20 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Class
         {
             if (usersRepository.IsThereAUserRegister(name,sname,email) == false)
             {
-                return false;
+                return Result.failure("User not register");
             }
             if (requestVerificationAccount.UserIsInList(id_user) == true)
             {
-                return false;
+                return Result.failure("User is not in list verifiacation email");
             }
            
             if (usersRepository.IsAccountActive(id_user) == false)
             {
-                return false;
+                return Result.failure("Acsount is not active");
             }
             if (usersRepository.IsAccountHaveBan(id_user) == true)
             {
-                return false;
+                return Result.failure("Account have ban");
             }
             return mailSystem.SendEmail(id_user);
         }

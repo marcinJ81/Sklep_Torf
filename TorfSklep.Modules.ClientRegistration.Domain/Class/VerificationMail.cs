@@ -22,10 +22,10 @@ namespace TorfSklep.Modules.UserRegistration.Domain
             if (requestVerificationAccount.UserIsInList(user_id) == true)
             {
                 mailSystem.SendEmail(user_id);
-                return false;
+                return Result.failure("User is in list to verification email");
             }
             mailSystem.SendEmail(user_id);
-            return true;
+            return Result.success();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace TorfSklep.Modules.UserRegistration.Domain
                 if (!String.IsNullOrEmpty(user.user_email))
                     return usersRepository.AddUser(user);
                 else
-                    return false;
+                    return Result.failure("User email is null or empty");
             }
             return result;
         }

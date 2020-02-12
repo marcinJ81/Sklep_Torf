@@ -21,8 +21,8 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Class
         public bool AssignAnExternalIdentifier(int id_user)
         {
             if (userRepo.IsExternalIDSet(id_user) == false)
-                return true;
-            return false;
+                return Result.success();
+            return Result.failure("External ID not set to user");
         }
 
         public bool SendOrderToExternalSystem(int user_id)
@@ -37,9 +37,9 @@ namespace TorfSklep.Modules.UserRegistration.Domain.Class
             }
             if (externalId.GetNumberOfAttempts(user_id) >= LIMITOFSEND)
             {
-                return false;
+                return Result.failure("user has exceeded the limit attempts");
             }
-            return false;
+            return Result.failure("user not send request to external system for ID ");
         }
 
     }
