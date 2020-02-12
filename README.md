@@ -8,13 +8,13 @@ This project is an exercise based on a DNA course.
 ### Author of code:
 - [Marcin Juranek](https://www.linkedin.com/in/marcin-juranek-abb09899/ "Marcin Juranek")
 ## Event Storming Big Picture
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.PNG "Big Picture")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_BP/ESBP_main.jpg "Big Picture")
 
 ## Event Storming designation of subdomains
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.PNG "Subdomains")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_SD/SB_ekran_glowny.jpg "Subdomains")
 
 ## Event Storming Procces Level
-[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.PNG "Procces Level")
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.PNG)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_PL/BC_glowny_widok.jpg "Procces Level")
 
 ## Event Storming Design Level
 [![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_User.jpg)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_User.jpg "First BC in Design Level")
