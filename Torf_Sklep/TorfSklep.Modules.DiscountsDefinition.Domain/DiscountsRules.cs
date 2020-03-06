@@ -1,28 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
 using TorfSklep.Modules.DiscountsDefinition.Domain.SimpleClass;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain
 {
-   public class DiscountsRules
+    public class DiscountsRules : IDscountsRules
     {
-        private readonly ICreateDefinitionDiscount definitionDiscount;
-
-        public DiscountsRules(ICreateDefinitionDiscount definitionDiscount)
+        public bool RebateType(int rebate_id)
         {
-            this.definitionDiscount = definitionDiscount ?? throw new ArgumentNullException(nameof(definitionDiscount));
+            throw new NotImplementedException();
         }
 
-        public bool SetDiscountsRules()
+        public bool SetRebateRules()
         {
-            throw new Exception();
+            throw new NotImplementedException();
         }
-
-        public bool ChooseDiscountsTypes(int discount_id)
-        {
-            throw new Exception();
-        }
-
     }
 }
