@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -13,11 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Test_Fake_Class\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TorfSklep.Modules.DiscountsDefinition.Domain\TorfSklep.Modules.DiscountsDefinition.Domain.csproj" />
+    <ProjectReference Include="..\TorfSklep.Modules.RebatesDefinitions.Repository\TorfSklep.Modules.RebatesDefinitions.Repository.csproj" />
   </ItemGroup>
 
 </Project>
