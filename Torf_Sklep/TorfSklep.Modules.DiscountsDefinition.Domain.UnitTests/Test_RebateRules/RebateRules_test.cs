@@ -55,7 +55,7 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
         public void SetTypeValueRebatWhen_ValueIsBiggerOne()
         {
             //given
-            decimal rebateValue = 10.0m;
+            decimal rebateValue = 20.0m;
             //and
             int rebate_id = 1;
             //when
