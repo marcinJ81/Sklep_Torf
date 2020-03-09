@@ -1,28 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.DiscountsDefinition.Domain.Enums;
+using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
 using TorfSklep.Modules.DiscountsDefinition.Domain.SimpleClass;
+using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain
 {
-   public class DiscountsRules
+    public class DiscountsRules : IDscountsRules
     {
-        private readonly ICreateDefinitionDiscount definitionDiscount;
+        private readonly IAddTypeRebate typeRebate;
+        private readonly ICreateAndReadRebate createRebate;
 
-        public DiscountsRules(ICreateDefinitionDiscount definitionDiscount)
+        public DiscountsRules(IAddTypeRebate typeRebate, ICreateAndReadRebate createRebate)
         {
-            this.definitionDiscount = definitionDiscount ?? throw new ArgumentNullException(nameof(definitionDiscount));
+            this.typeRebate = typeRebate;
+            this.createRebate = createRebate;
         }
 
-        public bool SetDiscountsRules()
+        public bool RebateType(int rebate_id, VaLueTypeRebate typeRebate, decimal valueRebate)
         {
-            throw new Exception();
+            if (!this.typeRebate.AddTypeRebate(rebate_id, (int)typeRebate, valueRebate))
+            {
+                return false;
+            }
+            return true;
         }
 
-        public bool ChooseDiscountsTypes(int discount_id)
+        public bool SetRebateRules(DateTime beginDate, DateTime endDate, int? amount)
         {
-            throw new Exception();
+            if (!createRebate.CreateRebateRules(beginDate,endDate,amount))
+            {
+                return false;
+            }
+            return true;
         }
-
     }
 }
