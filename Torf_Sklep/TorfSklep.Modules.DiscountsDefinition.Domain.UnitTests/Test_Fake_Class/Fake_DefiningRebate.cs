@@ -10,9 +10,11 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {
+            if (!(amount > 0 && amount < 1) != ((int)VaLueTypeRebate.Percent != typeValue))
+                return false;
             if (amount <= 0)
                 return false;
-            if (!(((int)VaLueTypeRebate.Value != typeValue) ^ ((int)VaLueTypeRebate.Percent != typeValue)))
+            if (!(((int)VaLueTypeRebate.Value != typeValue) != ((int)VaLueTypeRebate.Percent != typeValue)))
                 return false;
             return true;
         }
