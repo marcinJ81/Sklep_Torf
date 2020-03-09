@@ -52,7 +52,7 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
             Assert.IsFalse(result);
         }
         [Test]
-        public void SetTypeValueRebatWhen_ValueIsBiggerOne()
+        public void SetTypeValueRebatWhen_ValueIsBiggerThenZero()
         {
             //given
             decimal rebateValue = 20.0m;
@@ -63,5 +63,42 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
             //then
             Assert.IsTrue(result);
         }
+        [Test]
+        public void NotSetTypeRebateWhen_ValueIsSmallerOrEquelZero()
+        {
+            //given
+            decimal rebateValue = 0.0m;
+            //and
+            int rebate_id = 1;
+            //when
+            bool result = SetRules.RebateType(rebate_id, VaLueTypeRebate.Value, rebateValue);
+            //then
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void SetRebateTypeWhen_WhenTypeIsPercentValue()
+        {
+            //given
+            decimal rebateValue = 20.0m;
+            //and
+            int rebate_id = 1;
+            //when
+            bool result = SetRules.RebateType(rebate_id, VaLueTypeRebate.Percent, rebateValue);
+            //then
+            Assert.IsTrue(result);
+        }
+        [Test]
+        public void SetRebateTypeWhen_WhenTypeIsValue()
+        {
+            //given
+            decimal rebateValue = 20.0m;
+            //and
+            int rebate_id = 1;
+            //when
+            bool result = SetRules.RebateType(rebate_id, VaLueTypeRebate.Value, rebateValue);
+            //then
+            Assert.IsTrue(result);
+        }
+
     }
 }

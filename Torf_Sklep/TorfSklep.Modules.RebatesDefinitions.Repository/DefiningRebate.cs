@@ -12,7 +12,7 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository
             throw new NotImplementedException();
         }
 
-        public bool CreateRebateRules(DateTime beginDate, DateTime expDate, int? amount)
+        public bool CreateRebateRules(DateTime beginDate, DateTime? expDate, int? amount)
         {
             throw new NotImplementedException();
         }

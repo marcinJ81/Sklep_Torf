@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorfSklep.Modules.DiscountsDefinition.Domain.Enums;
 using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
@@ -9,15 +10,19 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {
-            if (typeValue == 20)
-                return true;
-            return false;
+            if (amount <= 0)
+                return false;
+            if (!(((int)VaLueTypeRebate.Value != typeValue) ^ ((int)VaLueTypeRebate.Percent != typeValue)))
+                return false;
+            return true;
         }
 
-        public bool CreateRebateRules(DateTime beginDate, DateTime expDate, int? amount)
+        public bool CreateRebateRules(DateTime beginDate, DateTime? expDate, int? amount)
         {
-            if(beginDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+            if (beginDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+            {
                 return true;
+            }
             return false;
         }
 
