@@ -9,14 +9,17 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {
-            if (typeValue == 20)
+            if (typeValue == 10)
                 return true;
             return false;
         }
 
-        public bool CreateRebateRules(DateTime beginDate, DateTime expDate, int? amount)
+        public bool CreateRebateRules(DateTime beginDate, DateTime? expDate, int? amount)
         {
             if(beginDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+                return true;
+            if ((beginDate.ToShortDateString() == DateTime.Now.ToShortDateString())
+                && expDate is null)
                 return true;
             return false;
         }

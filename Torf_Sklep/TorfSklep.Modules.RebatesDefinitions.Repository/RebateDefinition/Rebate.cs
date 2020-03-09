@@ -10,7 +10,7 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition
         protected Rebate() { }
         protected int Rebate_id { get; set; }
         protected DateTime Rebate_BeginDate { get; set; }
-        protected DateTime Rebate_EndDate { get; set; }
+        protected DateTime? Rebate_EndDate { get; set; }
         protected int? Rebate_Amount { get; set; }
         protected int Rebate_ValueType { get; set; }
         protected decimal Rebate_Value { get; set; } 

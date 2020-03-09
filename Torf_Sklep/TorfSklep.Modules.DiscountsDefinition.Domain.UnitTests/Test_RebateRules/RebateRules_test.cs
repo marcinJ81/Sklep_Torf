@@ -22,7 +22,20 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
             this.fakeTypeRepo = new Fake_DefiningRebate();
             this.SetRules = new DiscountsRules(fakeTypeRepo,fakeRulesRepo);
         }
-
+        [Test]
+        public void SetRulesWhen_BeginDateIsTheFutureAnEndDateIsNotExist()
+        {
+            //given
+            DateTime beginRebate = DateTime.Now; //now + 1 day
+            //and
+            DateTime? endDate = null;
+            //and
+            int? amount = null;
+            //when
+            bool result = SetRules.SetRebateRules(beginRebate, endDate, amount);
+            //then
+            Assert.IsTrue(result);
+        }
         [Test]
         public void SetRulesWhen_BeginDateIsNow()
         {

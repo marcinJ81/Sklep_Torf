@@ -19,12 +19,16 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
             this.createRebate = createRebate;
         }
 
-        public bool RebateType(int rebate_id, VaLueTypeRebate typeRebate, decimal vauleRebate)
+        public bool RebateType(int rebate_id, VaLueTypeRebate typeRebate, decimal valueRebate)
         {
-            throw new NotImplementedException();
+            if (!this.typeRebate.AddTypeRebate(rebate_id, typeRebate, valueRebate))
+            {
+                return false;
+            }
+            return true;
         }
 
-        public bool SetRebateRules(DateTime beginDate, DateTime endDate, int? amount)
+        public bool SetRebateRules(DateTime beginDate, DateTime? endDate, int? amount)
         {
             if (!createRebate.CreateRebateRules(beginDate,endDate,amount))
             {
