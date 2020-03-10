@@ -37,4 +37,6 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
             return true;
         }
     }
+
+    
 }
