@@ -99,7 +99,6 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
             //then
             Assert.IsFalse(result);
         }
-
         [Test]
         public void SetRebateTypeWhen_WhenTypeIsValue()
         {
