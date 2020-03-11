@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Enums;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
-using TorfSklep.Modules.DiscountsDefinition.Domain.SimpleClass;
 using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain
