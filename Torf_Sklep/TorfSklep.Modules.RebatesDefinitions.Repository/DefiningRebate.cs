@@ -5,7 +5,7 @@ using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.RebatesDefinitions.Repository
 {
-    public class DefiningRebate : Rebate, ICreateAndReadRebate, IAddTypeRebate
+    public class DefiningRebate : Rebate, IReadRebate<Rebate>, IAddTypeRebate,ICreateRebateDefinition
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {

@@ -10,12 +10,12 @@ namespace Tests
     public class RebateCode_Tests
     {
         private ICreateAndGenerateRebateCode rebateCode;
-        private ICreateAndReadRebate readRebate;
+        private ICreateAndReadRebate readRebate_fake;
         [SetUp]
         public void Setup()
         {
-            this.readRebate = new Fake_DefiningRebate();
-            this.rebateCode = new RebateCode();
+            this.readRebate_fake = new Fake_DefiningRebate();
+            this.rebateCode = new RebateCode(readRebate_fake);
         }
 
         #region positive_test_AssignCodeToDefinition

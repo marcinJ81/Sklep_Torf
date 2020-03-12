@@ -10,9 +10,9 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
     public class DiscountsRules : IDscountsRules
     {
         private readonly IAddTypeRebate typeRebate;
-        private readonly ICreateAndReadRebate createRebate;
+        private readonly ICreateRebateDefinition createRebate;
 
-        public DiscountsRules(IAddTypeRebate typeRebate, ICreateAndReadRebate createRebate)
+        public DiscountsRules(IAddTypeRebate typeRebate, ICreateRebateDefinition createRebate)
         {
             this.typeRebate = typeRebate;
             this.createRebate = createRebate;
