@@ -9,5 +9,6 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository.RebateCode
         public int RebateC_id { get; set; }
         public int Rebate_id  {get;set;}
         public string RebateC_value { get; set; }
+        public string RebateC_Category { get; set; }
     }
 }

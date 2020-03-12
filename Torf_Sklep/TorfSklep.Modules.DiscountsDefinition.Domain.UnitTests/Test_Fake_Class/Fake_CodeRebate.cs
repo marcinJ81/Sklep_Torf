@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
+using TorfSklep.Modules.RebatesDefinitions.Repository.RebateCode;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
 {
-    public class Fake_CodeRebate : ICreateRebateCode, IAssignRebateToDefinition
+    public class Fake_CodeRebate : ICodeRebateFunctions
     {
-        public bool AssignRebateCodeToDefinition(int codeR_id, int rebate_id)
+        public List<RebateCodeTable> GetListOfCode(string category)
         {
             throw new NotImplementedException();
         }
 
-        public bool CreateRebateCode(int rebate_id, string nameCode)
+        public RebateCodeTable GetOneRebateCode(int rebateC_id)
         {
             throw new NotImplementedException();
         }
