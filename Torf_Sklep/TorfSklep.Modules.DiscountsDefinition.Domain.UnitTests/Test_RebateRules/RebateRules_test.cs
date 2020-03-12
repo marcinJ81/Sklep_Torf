@@ -12,7 +12,7 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
    public class RebateRules_test
     {
         private IDscountsRules SetRules;
-        private ICreateAndReadRebate<Fake_Rebate> fakeRulesRepo;
+        private ICreateRebateDefinition fakeRulesRepo;
         private IAddTypeRebate fakeTypeRepo;
 
         [SetUp]

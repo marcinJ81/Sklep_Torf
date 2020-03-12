@@ -4,9 +4,12 @@ using System.Text;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces
 {
-    public interface ICreateAndGenerateRebateCode
+    public interface ICreateRebateCode
+    {
+        bool CreateRebateCode(int rebate_id, string nameCode);
+    }
+    public interface IAssignRebateToDefinition
     {
         bool AssignRebateCodeToDefinition(int codeR_id, int rebate_id);
-        bool CreateRebateCode(int rebate_id, string nameCode);
     }
 }

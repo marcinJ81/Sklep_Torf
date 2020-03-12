@@ -6,7 +6,7 @@ using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
 {
-    public class Fake_DefiningRebate : ICreateAndReadRebate<Fake_Rebate>, IAddTypeRebate
+    public class Fake_DefiningRebate : ICreateRebateDefinition, IAddTypeRebate,IReadRebate<Fake_Rebate>
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {
