@@ -6,7 +6,7 @@ using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
 {
-    public class Fake_DefiningRebate : ICreateRebateDefinition, IAddTypeRebate,IReadRebate<Fake_Rebate>
+    public class Fake_DefiningRebate : ICreateRebateDefinition, IAddTypeRebate, IReadRebateDefinition
     {
         public bool AddTypeRebate(int rebate_id, int typeValue, decimal amount)
         {
@@ -28,14 +28,77 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
             return false;
         }
 
-        public List<Fake_Rebate> ReadAllRebate()
+        public List<Rebate> ReadAllRebate()
         {
-            throw new NotImplementedException();
+            TimeSpan timeSpan = new TimeSpan(5, 0, 0, 0, 0);
+            DateTime? endDate = DateTime.Now + timeSpan;
+
+            List<Rebate> fakeRebateDefinition = new List<Rebate>
+            {
+                new Rebate
+                {
+                    Rebate_id = 1,
+                    Rebate_Amount = 10,
+                    Rebate_BeginDate = DateTime.Now,
+                    Rebate_EndDate = null,
+                    Rebate_Name = "Ilosc ograniczona",
+                    Rebate_Value = 0.5m,
+                    Rebate_ValueType = 20,
+                    Rebate_Expired = null
+                },
+                new Rebate
+                {
+                    Rebate_id = 2,
+                    Rebate_Amount = 10,
+                    Rebate_BeginDate = DateTime.Now,
+                    Rebate_EndDate = endDate,
+                    Rebate_Name = "ilosc i data ograniczona",
+                    Rebate_Value = 1,
+                    Rebate_ValueType = 10,
+                    Rebate_Expired = null
+                },
+                new Rebate
+                {
+                    Rebate_id = 3,
+                    Rebate_Amount = null,
+                    Rebate_BeginDate = DateTime.Now,
+                    Rebate_EndDate = null,
+                    Rebate_Name = "brak ograniczen",
+                    Rebate_Value = 1,
+                    Rebate_ValueType = 10,
+                    Rebate_Expired = null
+                },
+                new Rebate
+                {
+                    Rebate_id = 4,
+                    Rebate_Amount = null,
+                    Rebate_BeginDate = DateTime.Now,
+                    Rebate_EndDate = endDate,
+                    Rebate_Name = "brak ilosci jest data ograniczenia",
+                    Rebate_Value = 1,
+                    Rebate_ValueType = 10,
+                    Rebate_Expired = null
+                }
+            };
+
+            return fakeRebateDefinition;
         }
 
-        public Fake_Rebate ReadSpecificRebate(int rebate_id)
+        public Rebate ReadSpecificRebate(int rebate_id)
         {
-            throw new NotImplementedException();
+            Rebate rebate = new Rebate
+            {
+                Rebate_id = 5,
+                Rebate_Amount = 10,
+                Rebate_BeginDate = DateTime.Now,
+                Rebate_EndDate = null,
+                Rebate_Name = "brak ilosci jest data ograniczenia",
+                Rebate_Value = 1,
+                Rebate_ValueType = 10,
+                Rebate_Expired = null
+            };
+
+            return rebate;
         }
     }
 }

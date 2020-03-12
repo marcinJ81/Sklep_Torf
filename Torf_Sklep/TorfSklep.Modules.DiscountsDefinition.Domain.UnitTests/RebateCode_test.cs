@@ -9,13 +9,14 @@ namespace Tests
 {
     public class RebateCode_Tests
     {
-        private ICreateAndGenerateRebateCode rebateCode;
-        private ICreateAndReadRebate readRebate_fake;
+        private ICreateRebateCode rebateCode;
+        private IAssignRebateToDefinition assignRebateToDefinition; 
+        private IReadRebateDefinition readRebate_fake;
         [SetUp]
         public void Setup()
         {
-            this.readRebate_fake = new Fake_DefiningRebate();
-            this.rebateCode = new RebateCode(readRebate_fake);
+            this.readRebate_fake = 
+            this.rebateCode =  
         }
 
         #region positive_test_AssignCodeToDefinition
@@ -27,7 +28,7 @@ namespace Tests
             int coder_id = 1;
             int rebate_id = 1;
             //when
-           bool result = this.rebateCode.AssignRebateCodeToDefinition(coder_id, rebate_id);
+           bool result = this.assignRebateToDefinition.AssignRebateCodeToDefinition(coder_id, rebate_id);
             //then
             Assert.IsTrue(result);
         }

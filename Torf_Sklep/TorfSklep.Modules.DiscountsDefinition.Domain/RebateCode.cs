@@ -6,11 +6,11 @@ using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain
 {
-    public class RebateCode : ICreateAndGenerateRebateCode
+    public class RebateCode : ICreateRebateCode, IAssignRebateToDefinition
     {
-        private ICreateAndReadRebate readRebate;
+        private IReadRebateDefinition readRebate;
 
-        public RebateCode(ICreateAndReadRebate readRebate)
+        public RebateCode(IReadRebateDefinition readRebate)
         {
             this.readRebate = readRebate;
         }

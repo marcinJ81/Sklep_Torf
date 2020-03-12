@@ -4,10 +4,10 @@ using System.Text;
 
 namespace TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition
 {
-    public interface IReadRebate<T>
+    public interface IReadRebateDefinition
     {
-        T ReadSpecificRebate(int rebate_id);
-        List<T> ReadAllRebate(); 
+        Rebate ReadSpecificRebate(int rebate_id);
+        List<Rebate> ReadAllRebate(); 
     }
     public interface IAddTypeRebate
     {
