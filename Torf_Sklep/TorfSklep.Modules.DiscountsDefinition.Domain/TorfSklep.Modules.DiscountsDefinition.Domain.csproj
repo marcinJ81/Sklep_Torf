@@ -8,4 +8,8 @@
     <ProjectReference Include="..\TorfSklep.Modules.RebatesDefinitions.Repository\TorfSklep.Modules.RebatesDefinitions.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SimpleClass\" />
+  </ItemGroup>
+
 </Project>

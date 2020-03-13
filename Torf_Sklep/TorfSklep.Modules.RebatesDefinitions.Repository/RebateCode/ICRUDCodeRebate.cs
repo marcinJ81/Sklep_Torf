@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TorfSklep.Modules.RebatesDefinitions.Repository.RebateCode
+{
+    public interface ICodeRebateFunctions
+    {
+        List<RebateCodeTable> GetListOfCode(string category);
+        RebateCodeTable GetOneRebateCode(int rebateC_id);
+    }
+}

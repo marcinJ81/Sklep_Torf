@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Enums;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
-using TorfSklep.Modules.DiscountsDefinition.Domain.SimpleClass;
 using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
 
 namespace TorfSklep.Modules.DiscountsDefinition.Domain
@@ -11,9 +10,9 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
     public class DiscountsRules : IDscountsRules
     {
         private readonly IAddTypeRebate typeRebate;
-        private readonly ICreateAndReadRebate createRebate;
+        private readonly ICreateRebateDefinition createRebate;
 
-        public DiscountsRules(IAddTypeRebate typeRebate, ICreateAndReadRebate createRebate)
+        public DiscountsRules(IAddTypeRebate typeRebate, ICreateRebateDefinition createRebate)
         {
             this.typeRebate = typeRebate;
             this.createRebate = createRebate;
@@ -37,4 +36,6 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
             return true;
         }
     }
+
+    
 }

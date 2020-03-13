@@ -161,3 +161,5 @@ And I have abstract class with  methods definitions
  //methods definitions
  }
 ```
+## Second Bonded Context Rebate Definitions
+[![](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_RebateDefiniotions.jpg)](https://github.com/marcinJ81/Sklep_Torf/blob/master/ES_image/ES_DL/ES_DL_RebateDefiniotions.jpg "Second BC in Design Level")

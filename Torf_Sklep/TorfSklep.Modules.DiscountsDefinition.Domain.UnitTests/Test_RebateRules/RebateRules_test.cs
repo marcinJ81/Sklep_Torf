@@ -12,7 +12,7 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
    public class RebateRules_test
     {
         private IDscountsRules SetRules;
-        private ICreateAndReadRebate fakeRulesRepo;
+        private ICreateRebateDefinition fakeRulesRepo;
         private IAddTypeRebate fakeTypeRepo;
 
         [SetUp]
@@ -99,7 +99,6 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_RebateRule
             //then
             Assert.IsFalse(result);
         }
-
         [Test]
         public void SetRebateTypeWhen_WhenTypeIsValue()
         {
