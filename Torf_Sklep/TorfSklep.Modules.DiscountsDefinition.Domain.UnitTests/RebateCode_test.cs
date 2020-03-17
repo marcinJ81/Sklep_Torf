@@ -29,14 +29,30 @@ namespace Tests
             //given
             //get specific rebate definition 
             int rebate_id = 1;
+            //and
+            DateTime? endDate = this.readRebate_fake.ReadSpecificRebate(rebate_id).Rebate_EndDate;
             //when
            bool result = this.assignRebateToDefinition.AssignRebateCodeToDefinition(rebate_id);
             //then
             Assert.IsTrue(result);
+            //and
+            Assert.IsNull(endDate);
         }
         [Test]
-        public void AssignCodeToDefinition_When_AmounBiggerZerotAndEndDateIsNotNull()
-        { }
+        public void AssignCodeToDefinition_When_AmountBiggerZerotAndEndDateIsNotNull()
+        {
+            //given
+            //get specific rebate definition 
+            int rebate_id = 2;
+            //and
+            DateTime? endDate = this.readRebate_fake.ReadSpecificRebate(rebate_id).Rebate_EndDate;
+            //when
+            bool result = this.assignRebateToDefinition.AssignRebateCodeToDefinition(rebate_id);
+            //then
+            Assert.IsTrue(result);
+            //and
+            Assert.IsNotNull(endDate);
+        }
         #endregion
 
         #region negative_test_AssignCodeToDefinition

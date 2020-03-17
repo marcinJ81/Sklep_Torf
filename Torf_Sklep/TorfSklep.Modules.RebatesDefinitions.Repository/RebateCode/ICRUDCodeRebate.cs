@@ -9,6 +9,6 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository.RebateCode
         List<RebateCodeTable> GetListOfCode(string category);
         RebateCodeTable GetOneRebateCode(int rebateC_id);
         bool JoinDefinitionAndCode( int rebate_id);
-
+        List<RebateCodeTable> GetListOfCode();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces;
 using TorfSklep.Modules.RebatesDefinitions.Repository.RebateCode;
@@ -10,7 +11,30 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
     {
         public List<RebateCodeTable> GetListOfCode(string category)
         {
-            throw new NotImplementedException();
+            List<RebateCodeTable> result = GetListOfCode();
+            return result;
+        }
+
+        public List<RebateCodeTable> GetListOfCode()
+        {
+            List<RebateCodeTable> codeRebate = new List<RebateCodeTable>
+            {
+                new RebateCodeTable
+                {
+                    RebateC_id = 1,
+                    Rebate_id = 1,
+                    RebateC_value = "test1",
+                    RebateC_Category = "wiosna"
+                },
+                new RebateCodeTable
+                {
+                    RebateC_id = 2,
+                    Rebate_id = 2,
+                    RebateC_value = "test2",
+                    RebateC_Category = "zima"
+                },
+            };
+            return codeRebate;
         }
 
         public RebateCodeTable GetOneRebateCode(int rebateC_id)
@@ -20,8 +44,8 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
 
         public bool JoinDefinitionAndCode(int rebate_id)
         {
-
-            if (rebate_id != 1)
+            var result = GetListOfCode();
+            if (!result.Any(x => x.Rebate_id == rebate_id))
                 return false;
             return true;
         }
