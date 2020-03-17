@@ -10,6 +10,6 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.Interfaces
     }
     public interface IAssignRebateToDefinition
     {
-        bool AssignRebateCodeToDefinition(int codeR_id, int rebate_id);
+        bool AssignRebateCodeToDefinition(int rebate_id);
     }
 }

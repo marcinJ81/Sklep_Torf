@@ -28,10 +28,9 @@ namespace Tests
         {
             //given
             //get specific rebate definition 
-            int coder_id = 1;
             int rebate_id = 1;
             //when
-           bool result = this.assignRebateToDefinition.AssignRebateCodeToDefinition(coder_id, rebate_id);
+           bool result = this.assignRebateToDefinition.AssignRebateCodeToDefinition(rebate_id);
             //then
             Assert.IsTrue(result);
         }

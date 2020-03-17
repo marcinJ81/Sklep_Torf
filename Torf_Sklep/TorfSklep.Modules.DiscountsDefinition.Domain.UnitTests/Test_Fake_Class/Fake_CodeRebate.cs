@@ -17,5 +17,13 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
         {
             throw new NotImplementedException();
         }
+
+        public bool JoinDefinitionAndCode(int rebate_id)
+        {
+
+            if (rebate_id != 1)
+                return false;
+            return true;
+        }
     }
 }

@@ -16,5 +16,10 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository
         {
             throw new NotImplementedException();
         }
+
+        public bool JoinDefinitionAndCode(int rebate_id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
