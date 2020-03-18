@@ -28,7 +28,11 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
 
         public bool CreateRebateCode(int rebate_id, string nameCode)
         {
-            throw new NotImplementedException();
+            if (readRebate.ReadSpecificRebate(rebate_id).Rebate_Amount != null)
+            {
+                return false;
+            }
+            return readCodeRebate.JoinDefinitionAndCode(rebate_id, nameCode);
         }
     }
 }

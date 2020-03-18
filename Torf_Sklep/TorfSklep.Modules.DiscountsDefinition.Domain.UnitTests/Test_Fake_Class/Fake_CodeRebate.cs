@@ -33,6 +33,13 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
                     RebateC_value = "test2",
                     RebateC_Category = "zima"
                 },
+                new RebateCodeTable
+                {
+                    RebateC_id = 3,
+                    Rebate_id = 3,
+                    RebateC_value = "",
+                    RebateC_Category = "stały rabat"
+                }
             };
             return codeRebate;
         }
@@ -48,6 +55,21 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
             if (!result.Any(x => x.Rebate_id == rebate_id))
                 return false;
             return true;
+        }
+
+        public bool JoinDefinitionAndCode(int rebate_id, string codeName)
+        {
+            var result = GetListOfCode();
+            if (result.Any(x => x.Rebate_id == rebate_id))
+            {
+                //add codeName to code rebate
+                bool existName = result.Any(x => x.Rebate_id == rebate_id && x.RebateC_Category == codeName);
+                return existName;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
