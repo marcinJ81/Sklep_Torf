@@ -17,14 +17,22 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain
             this.readRebate = readRebate;
             this.readCodeRebate = codeRebate;
         }
-        public bool AssignRebateCodeToDefinition(int codeR_id, int rebate_id)
+        public bool AssignRebateCodeToDefinition(int rebate_id)
         {
-            throw new NotImplementedException();
+            if (!(readRebate.ReadSpecificRebate(rebate_id).Rebate_Amount > 0))
+            {
+                return false;
+            }
+            return readCodeRebate.JoinDefinitionAndCode(rebate_id);
         }
 
         public bool CreateRebateCode(int rebate_id, string nameCode)
         {
-            throw new NotImplementedException();
+            if (readRebate.ReadSpecificRebate(rebate_id).Rebate_Amount != null)
+            {
+                return false;
+            }
+            return readCodeRebate.JoinDefinitionAndCode(rebate_id, nameCode);
         }
     }
 }

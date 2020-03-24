@@ -12,7 +12,22 @@ namespace TorfSklep.Modules.RebatesDefinitions.Repository
             throw new NotImplementedException();
         }
 
+        public List<RebateCodeTable> GetListOfCode()
+        {
+            throw new NotImplementedException();
+        }
+
         public RebateCodeTable GetOneRebateCode(int rebateC_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool JoinDefinitionAndCode(int rebate_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool JoinDefinitionAndCode(int rebate_id, string codeName)
         {
             throw new NotImplementedException();
         }

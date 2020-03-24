@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TorfSklep.Modules.DiscountsDefinition.Domain.Enums;
 using TorfSklep.Modules.RebatesDefinitions.Repository.RebateDefinition;
@@ -86,19 +87,9 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
 
         public Rebate ReadSpecificRebate(int rebate_id)
         {
-            Rebate rebate = new Rebate
-            {
-                Rebate_id = 5,
-                Rebate_Amount = 10,
-                Rebate_BeginDate = DateTime.Now,
-                Rebate_EndDate = null,
-                Rebate_Name = "brak ilosci jest data ograniczenia",
-                Rebate_Value = 1,
-                Rebate_ValueType = 10,
-                Rebate_Expired = null
-            };
-
-            return rebate;
+           var result =  ReadAllRebate();
+            var onerRow = result.Where(x => x.Rebate_id == rebate_id).First();
+            return onerRow;
         }
     }
 }
