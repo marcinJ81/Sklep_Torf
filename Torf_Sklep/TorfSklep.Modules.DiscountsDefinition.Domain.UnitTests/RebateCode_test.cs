@@ -81,6 +81,7 @@ namespace Tests
             int rebate_id = 3;
             //and
             string codeName = "sta³y rabat";
+
             //when
             bool result = this.createRebateCode.CreateRebateCode(rebate_id, codeName);
             //then
@@ -88,13 +89,37 @@ namespace Tests
         }
         [Test]
         public void CreateRebateCod_When_AmonutIsNullEndDateIsNotNull()
-        { }
+        {
+            //given
+            //get specific rebate definition 
+            int rebate_id = 4;
+            //and
+            string codeName = "sta³y rabat";
+            //and
+            DateTime? endDate = this.readRebate_fake.ReadSpecificRebate(rebate_id).Rebate_EndDate;
+            //when
+            bool result = this.createRebateCode.CreateRebateCode(rebate_id, codeName);
+            //then
+            Assert.IsTrue(result);
+            //and
+            Assert.IsNotNull(endDate);
+        }
         #endregion
 
         #region negative_test_CreateRebateCode
         [Test]
         public void NotCreateRebateCode_When_AmountIsNotNull()
-        { }
+        {
+            //given
+            //get specific rebate definition 
+            int rebate_id = 1;
+            //and
+            string codeName = "zima";
+            //when
+            bool result = this.createRebateCode.CreateRebateCode(rebate_id, codeName);
+            //then
+            Assert.IsFalse(result);
+        }
         #endregion
 
 

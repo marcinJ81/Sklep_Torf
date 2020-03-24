@@ -39,6 +39,13 @@ namespace TorfSklep.Modules.DiscountsDefinition.Domain.UnitTests.Test_Fake_Class
                     Rebate_id = 3,
                     RebateC_value = "",
                     RebateC_Category = "stały rabat"
+                },
+                new RebateCodeTable
+                {
+                    RebateC_id = 4,
+                    Rebate_id = 4,
+                    RebateC_value = "",
+                    RebateC_Category = "stały rabat"
                 }
             };
             return codeRebate;
